@@ -19,21 +19,26 @@
 </template>
 
 <script>
-import header from "./components/header/header.vue"
-import axios from "axios"
+import header from "./components/header/header.vue";
+import axios from "axios";
+import {urlParse} from "../static/js/util.js"
 export default {
   name: "App",
   components: {"v-header":header},
   data() {
     return{
-      seller:{}
+      seller:{
+        id:(() =>{
+          let queryParam = urlParse();
+          return queryParam.id;
+        })()
+      }
     }
   },
    created (){ //  创建之前 请求数据
-     axios.get('/api/seller').then((result) => {
-         console.log(result) //  控制台检查  数据存储在  result.data 里  
-        this.seller = result.data.data //  将数据存到sellerobj里  
-        console.log(this.seller.avatar)       
+     axios.get('/api/seller?id='+this.seller.id).then((result) => {  
+        //this.seller = result.data.data //  将数据存到sellerobj里  
+        this.seller = Object.assign({},this.seller,result.data.data) //对象扩展，将id扩展进去
       })
    }
 }

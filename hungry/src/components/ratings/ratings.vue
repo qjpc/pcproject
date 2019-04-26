@@ -45,7 +45,7 @@
                   <span class="item" v-for="(item,index) in rating.recommend" :key="index">{{item}}</span>
                 </div>
                 <div class="time">
-                  {{rating.rateTime}}
+                  {{rating.rateTime | formatDate}}
                 </div>
               </div>
             </li>
@@ -60,6 +60,7 @@ import BScroll from "better-scroll"
 import star from "../../components/star/star.vue"
 import split from "../../components/split/split.vue"
 import ratingselect from "../../components/ratingselect/ratingselect.vue"
+import {formatDate} from '../../../static/js/formatDate';
 import axios from "axios"
 const All = 2;
 export default {
@@ -87,6 +88,12 @@ export default {
   },
   components:{
     star,split,ratingselect
+  },
+  filters: {
+    formatDate(time) {
+      let date = new Date(time);
+      return formatDate(date, 'yyyy-MM-dd hh:mm');
+    }
   },
   methods:{
     needShow(type,text){
