@@ -1,0 +1,78 @@
+<template>
+  <div>
+    <v-header :seller="seller"></v-header>
+    <div class="tab border-1px">
+      <div class="tab-item">
+        <router-link to="/goods">商品</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/ratings">评论</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/sellers">商家</router-link>
+      </div>
+    </div>
+    <keep-alive>
+      <router-view :seller="seller"></router-view>
+    </keep-alive>
+  </div>
+</template>
+
+<script>
+import header from "./components/header/header.vue"
+import axios from "axios"
+export default {
+  name: "App",
+  components: {"v-header":header},
+  data() {
+    return{
+      seller:{}
+    }
+  },
+   created (){ //  创建之前 请求数据
+     axios.get('/api/seller').then((result) => {
+         console.log(result) //  控制台检查  数据存储在  result.data 里  
+        this.seller = result.data.data //  将数据存到sellerobj里  
+        console.log(this.seller.avatar)       
+      })
+   }
+}
+</script>
+
+<style lang="stylus" rel="stylesheet/stylus">
+@import "./commom/stylus/mixin.styl"
+    .tab
+      display: flex
+      width:100%
+      height:40px
+      line-height :40px
+      position:relative
+      &:after
+          display:block
+          position: absolute
+          left:0
+          bottom:0
+          width:100%
+          border-top:1px solid rgba(7,17,27,0.1)
+          content:''
+      &:before
+          display:block
+          position: absolute
+          left:0
+          top:0
+          width:100%
+          border-bottom:1px solid rgba(7,17,27,0.1)
+          content:''
+      .tab-item
+        flex:1
+        text-align :center
+        &>a 
+          display :block
+          font size 14px
+          color:rgb(77,85,93)
+          &.active
+            color:rgb(240,20,20)
+</style>
+
+  
+ 
