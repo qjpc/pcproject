@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/channel.css" />
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_812297_gn0v2ir2aqs.css" />
+    </head>
+    
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <div class="statusbarHeight">&nbsp;</div>
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">还款通道</h1>
+    </header>
+    <div class="mui-content">
+        <ul class="channel_detail">
+            <!-- <li>
+                <div class="bg">
+                    <div class="left">
+                        <div class="introduce">小额落地还款</div>
+                        <div class="rate">费率</div>
+                    </div>
+                    <div class="right">
+                        <div class="time">09:00-21:00</div>
+                        <div class="date">节假日</div>
+                    </div>
+                </div>
+                <div class="explain">
+                    <div>A.单笔交易金额</div>
+                    <div>A.单笔交易金额</div>
+                    <div>A.单笔交易金额</div>
+                </div>
+            </li> -->
+
+            
+        </ul>
+    </div>
+
+
+
+    <script src="../../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        var tokens = getToken();
+        mui.plusReady(function() {
+            mui.init({
+                hardwareAccelerated: true,
+                beforeback: function() {
+                    //获得父页面的webview
+                    var list = plus.webview.currentWebview().opener();
+                    //触发父页面的自定义事件(refresh),从而进行刷新
+                    mui.fire(list, 'index');
+                    //返回true,继续页面关闭逻辑
+                    return true;
+                }
+            });
+            var StatusbarHeight = plus.navigator.getStatusbarHeight();
+            var headerH = StatusbarHeight+44;
+            $(".statusbarHeight").css("height",StatusbarHeight);
+            $("header").css("height",headerH);
+            $(".mui-content").css("padding-top",headerH);
+            var self = plus.webview.currentWebview();
+            var bankid = self.title;
+            $.ajax({
+                type: 'post',
+                url: site_app + '/api/repayment/getChannel',
+                async: false,
+                data: {
+                    'token': tokens,
+                    'bankid': bankid
+                },
+                dataType: 'json',
+                success: function(e) {
+                    var content = '';
+                    if(e.error == 0) {
+                        var result = e.data;
+                        console.log(result)
+                        for(var i = 0;i<result.length;i++){
+                            content += "<li class='channel' data-id = '" + result[i].payment_id + "'>";
+                            content += "<div class='bg'>";
+                            content += "<div class='left'>";
+                            content += "<div class='introduce'>"+result[i].payment_name+"</div>";
+                            content += "<div class='rate'>"+ "费率: "+(Number(result[i].real_rate) *100).toFixed(2) +"%"+ "</div>";
+                            content += "</div>";
+                            content += "<div class='right'>";
+                            content += "<div class='time'>09:00-21:00</div>";
+                            content += "<div class='date'>包含节假日</div>";
+                            content += "</div>";
+                            content += "</div>";
+                            content += "<div class = 'explain'>";
+                            content += "<div>"+"A.单笔交易金额最高为"+result[i].payment_max_money+"</div>";
+                            if(result[i].payment_mode == 1){
+                                content += "<div>"+"B.还款次数为每天刷"+result[i].payment_pattern+"次还1次"+"</div>" 
+                                           
+                            }else if(result[i].payment_mode == 2){
+                                content += "<div>"+"B.还款次数为每天刷1次还" +result[i].payment_pattern +"次";
+                            }
+                            content +=  "<div>"+"C.每日最多还"+result[i].payment_day_num+"期</div>";
+                            content += "</div>";
+                        }
+                        $(".channel_detail").html(content);
+                        $.ajax({
+                            type: "post",
+                            url: site_app + "/api/my/card_list",
+                            data: {
+                                token: tokens
+                            },
+                            dataType: "json",
+                            success:function(e){
+                                for(var j=0;j<e.data.length;j++){
+                                    $(".channel").attr("title",e.data[j].card_id);
+                                }
+                            }
+                        });
+                    };
+                }
+            });
+
+            $(".channel_detail").on("click",".channel",function(){
+                var titles = $(this).attr("title");
+                var data_id = $(this).attr("data-id");
+                mui.openWindow({
+                    url: "../index/payment.html",
+                    id: "payment",
+                    show: {
+                        autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                    },
+                    extras: {
+                        title: titles,
+                        channel_id: data_id
+                    },
+                    waiting: {
+                        autoShow: true, //自动显示等待框，默认为true
+                        title: '', //等待对话框上显示的提示内容
+                    }
+                })
+            })
+        });
+    </script>
+</body>

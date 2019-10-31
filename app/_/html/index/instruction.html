@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <link href="../../css/mui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/instruction.css" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_812297_gn0v2ir2aqs.css" />
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <div class="statusbarHeight">&nbsp;</div>
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">使用说明</h1>
+    </header> 
+    <div class="mui-content">
+        <div class="wrap one">
+            <h1>一、APP客户端无法下载安装</h1>
+            <div>请先检查您的手机网络是否连接，建议在网络良好的情况下进行下载。苹果手机下载安装完成请先添加信任
+                （设置-通用-设备管理-信任）如果确认手机端操作系统以及手机网络连接无误还是无法安装，请致电
+                400-111-8108咨询。
+            </div>
+        </div>
+        <div class="wrap">
+            <h1>二、注册流程</h1>
+            <div>
+                第一步，通过识别扫描二维码进行APP客户端的安装。<br/>
+                第二步，输入注册手机号获取验证码<br/>
+                第三步，登录客户端，点击“我的”前往“实名认证”。<br/>
+                1.提交实名认证的银行卡必须为储蓄卡（银行Ⅰ类账户）。<br/>
+                2.身份证正面照片，身份证号码清晰可见。<br/>
+                3.身份证反面照片，有效期限清晰可见。<br/>
+                4.本人名下的银行卡正面照片，卡号清晰可见。<br/>
+            </div>
+        </div>
+        <div class="wrap">
+            <h1>三、收不到验证码短信</h1>
+            <div>
+                如因运营商推送信息延迟原因收不到验证码短信，请致电400-111-8108，告知您的注册
+                手机号码，询问短信内容后得到验证，即可进入注册下一步骤。
+            </div>
+        </div>
+        <div class="wrap">
+            <h1>四、注册提交后，审核需要多久</h1>
+            <div>
+                提交当日（工作日）即可完成审核。
+            </div>
+        </div>
+        <div class="wrap">
+            <h1>五、实名认证提交后审核不通过</h1>
+            <div>
+                如遇审核不通过，您可以根据审核不通过的原因，再次提交符合要求的审核材料，并等待审核结果。
+            </div>
+        </div>
+        <div class="wrap">
+            <h1>六、审核不通过原因</h1>
+            <div>
+                1.实名认证提交银行卡信息准确<br/>
+                2.缺少或提供不一致的申请人身份证正面与银行卡的正面照；<br/>
+                3.缺少或提供不一致的申请人手持身份证正面照；<br/>
+                4.银行卡卡面磨损、反光、对焦模糊，单只信息无法识别；<br/>
+                5.银行卡、身份证拍照时被手指遮挡、不清晰、不完整；<br/>
+            </div>
+        </div>
+        <div class="wrap">
+            <h1>七、一个人可以用多少手机号注册</h1>
+            <div>
+                一个身份证号只能绑定一个手机号注册。
+            </div>
+        </div>
+        <div class="wrap">
+            <h1>八、单日收款交易金额有限制多少</h1>
+            <div>
+                收款支付金额100-20000元。
+            </div>
+        </div>
+        <div class="wrap">
+            <h1>九、添加信用卡是否限制</h1>
+            <div>实名认证后，可以添加本人名下所有信用卡，数量不限制。</div>
+        </div>
+        <div class="wrap">
+            <h1>十、添加银行卡是否有限制</h1>
+            <div>实名认证后，不可添加其他银行卡，只能更换绑定的银行卡</div>
+        </div>
+        <div class="wrap">
+            <h1>十一、添加信用卡失败原因</h1>
+            <div>持卡人姓名、身份证号、卡号、手机号必需准确无误，且手机号同银行预号码一致。</div>
+        </div>
+    </div>
+
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/jquery-1.8.0.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script type="text/javascript">
+    mui.plusReady(function(){
+        mui.init({
+            hardwareAccelerated: true,
+        })
+        var StatusbarHeight = plus.navigator.getStatusbarHeight();
+        var headerH = StatusbarHeight + 44;
+        $(".statusbarHeight").css("height", StatusbarHeight);
+        $("header").css("height", headerH);
+        $(".mui-content").css("padding-top", headerH);
+    })
+    </script>
+</body>
+</html>

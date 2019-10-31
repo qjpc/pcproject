@@ -1,0 +1,65 @@
+.mui-grid{
+    background: #fff;
+	
+	padding:8px 15px 15px 15px;
+}
+html,body{
+    background: #fff !important;
+}
+.mui-grid .share-content{
+    padding:0px 12px 0 12px;
+    font-size: 14px;
+    background: #f9f9f9;
+}
+.mui-content .mui-banner{
+    background: #fff;
+}
+.mui-grid .share-content .wrap .bk{
+    display: flex;
+    display: -moz-box; 
+    display: -ms-flexbox;    
+    display: -webkit-box;    
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:12px 0;
+    border-bottom:1px solid #eeeeee;
+    color:rgb(51,51,51)
+}
+
+.mui-grid .share-content .wrap .bk .left .text{
+    color:rgb(153,153,153)
+}
+li:last-child{
+    border-bottom:none !important;
+}
+.mui-grid .share-content .wrap .bk .award .money{
+    color:red
+}
+
+
+.prohibit{
+    color:rgb(103,103,103) !important;
+    border:1px solid rgb(103,103,103) !important;
+}
+
+.mui-grid .share-content .wrap .bk .tapcard{
+    border: 1px solid rgb(0,114,249);
+    border-radius: 20px;
+    text-align: center;
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    color:rgb(0,114,249);
+    padding:0;
+}
+.mui-grid .reward{
+    text-align: center;
+    margin-top:15px;
+    font-size:14px;
+    color:rgb(153,153,153)
+}
+button:active{
+    background-color: #fff !important;
+}

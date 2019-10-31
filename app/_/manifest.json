@@ -1,0 +1,928 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id": "H55E8C280",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"name": "卡灵通",/*应用名称，程序桌面图标名称*/
+	"version": {
+		"name": "1.1.7",/*应用版本名称*/
+		"code": ""
+	},
+	"description": "",/*应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"developer": {
+		"name": "",/*开发者名称*/
+		"email": "",/*开发者邮箱地址*/
+		"url": ""
+	},
+	"permissions": {
+
+		"Cache": {
+			"description": "管理应用缓存"
+		},
+		"Console": {
+			"description": "跟踪调试输出日志"
+		},
+		"Contacts": {
+			"description": "访问系统联系人信息"
+		},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		
+		"Share": {},
+		"Payment": {},"Maps":{}
+	},
+	"plus": {
+		
+		"statusbar": {
+			"immersed": true
+		},
+		"splashscreen": {
+			"autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+			"waiting": false,"delay":"1000"
+		},
+		"popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，"none"为无侧滑返回功能，"hide"为侧滑隐藏Webview窗口。参考http://ask.dcloud.net.cn/article/102*/
+		"runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+		"distribute": {
+			"plugins": {
+				"payment": {
+					"weixin": {
+						"description": "微信支付",
+						"appid": "wxde9f5e7c55243be9"
+					},
+					"alipay": {
+						"description": "阿里支付",
+						"scheme": ""
+					}
+				},
+				"share": {
+					"weixin": {
+						"appid": "wxde9f5e7c55243be9",
+						"appsecret": "213661d48d4d99e3c3b8d5f7d34c1c07",
+						"description": "可选，微信分享"
+					}
+				}
+			},
+			"apple": {
+				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+				"mobileprovision": "",/*iOS应用打包配置文件*/
+				"password": "",/*iOS应用打包个人证书导入密码*/
+				"p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"frameworks": []
+			},
+			"google": {
+				"packagename": "",/*Android应用包名，如io.dcloud.HelloH5*/
+				"keystore": "",/*Android应用打包使用的密钥库文件*/
+				"password": "",/*Android应用打包使用密钥库中证书的密码*/
+				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+				"permissions": ["<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.INTERNET\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
+			},
+			"orientation": ["portrait-primary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"icons": {
+				"ios": {
+					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+					/*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					"iphone": {
+						"normal": "", /*iPhone3/3GS程序图标，分辨率：57x57*/
+						"retina": "", /*iPhone4程序图标，分辨率：114x114*/
+						/*iPhone4S/5/6程序图标，分辨率：120x120*/
+						/*iPhone6 Plus程序图标，分辨率：180x180*/
+						"spotlight-normal": "", /*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "", /*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
+						/*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "", /*iPhone4设置页面程序图标，分辨率：29x29*/
+						/*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
+						"app@2x": "unpackage/res/icons/120x120.png",
+						"app@3x": "unpackage/res/icons/180x180.png",
+						"settings@3x": "unpackage/res/icons/87x87.png",
+						"settings@2x": "unpackage/res/icons/58x58.png",
+						"spotlight@2x": "unpackage/res/icons/80x80.png",
+						"spotlight@3x": "unpackage/res/icons/120x120.png",
+						"notification@3x": "unpackage/res/icons/60x60.png",
+						"notification@2x": "unpackage/res/icons/40x40.png"
+					},
+					"ipad": {
+						"normal": "", /*iPad普通屏幕程序图标，分辨率：72x72*/
+						"retina": "", /*iPad高分屏程序图标，分辨率：144x144*/
+						/*iPad iOS7程序图标，分辨率：76x76*/
+						/*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						/*iPad设置页面程序图标，分辨率：29x29*/
+						"app": "unpackage/res/icons/76x76.png",
+						"app@2x": "unpackage/res/icons/152x152.png",
+						"settings": "unpackage/res/icons/29x29.png",
+						"proapp@2x": "unpackage/res/icons/167x167.png",
+						"spotlight": "unpackage/res/icons/40x40.png",
+						"settings@2x": "unpackage/res/icons/58x58.png",
+						"spotlight@2x": "unpackage/res/icons/80x80.png",
+						"notification": "unpackage/res/icons/20x20.png",
+						"notification@2x": "unpackage/res/icons/40x40.png"
+					},
+					"appstore": "unpackage/res/icons/1024x1024.png"
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png",
+					"xxxhdpi": "unpackage/res/icons/192x192.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
+						"retina35": "C:/Users/xiao/Desktop/未标题-1.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": "C:/Users/xiao/Desktop/未标题-1.png",/*4.0 英寸设备(iPhone5/iPhone5s)启动图片，分辨率：640x1136*/
+						"retina47": "C:/Users/xiao/Desktop/未标题-1.png",/*4.7 英寸设备(iPhone6)启动图片，分辨率：750x1334*/
+						"retina55": "C:/Users/xiao/Desktop/未标题-1.png",/*5.5 英寸设备(iPhone6 Plus)启动图片，分辨率：1242x2208*/
+						"retina55l": "C:/Users/xiao/Desktop/未标题-1.png",
+						"iphonex": "C:/Users/xiao/Desktop/启动页_看图王.png",
+						"iphonexl": "C:/Users/xiao/Desktop/启动页_看图王.png"
+					},
+					"ipad": {
+						"portrait": "C:/Users/xiao/Desktop/未标题-1.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "C:/Users/xiao/Desktop/未标题-1.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "C:/Users/xiao/Desktop/未标题-1.png", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "C:/Users/xiao/Desktop/未标题-1.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "C:/Users/xiao/Desktop/未标题-1.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "C:/Users/xiao/Desktop/未标题-1.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "C:/Users/xiao/Desktop/未标题-1.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "C:/Users/xiao/Desktop/未标题-1.png"
+					}
+				},
+				"android": {
+					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
+					"ldpi": "", /*大屏启动图片，分辨率：320x442*/
+					"hdpi": "C:/Users/xiao/Desktop/未标题-1.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "C:/Users/xiao/Desktop/未标题-1.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "C:/Users/xiao/Desktop/未标题-1.png"
+				}
+			}
+		}
+	},
+	"dependencies": {
+		"pages": {
+			"html/index/message_details.html": {
+				"href": "html/index/message_details.html",
+				"priority": 0
+			},
+			"html/index/message.html": {
+				"href": "html/index/message.html",
+				"resources": [],
+				"refer": [
+					"html/index/message_details.html"
+				],
+				"priority": 0
+			},
+			"html/index/kefu.html": {
+				"href": "html/index/kefu.html",
+				"priority": 1
+			},
+			"html/login/forget_pw.html": {
+				"href": "html/login/forget_pw.html",
+				"resources": [],
+				"refer": [
+					"html/login/login.html"
+				],
+				"priority": 2
+			},
+			"html/login/reg_protocol.html": {
+				"href": "html/login/reg_protocol.html",
+				"priority": 4
+			},
+			"html/login/reg.html": {
+				"href": "html/login/reg.html",
+				"resources": [],
+				"refer": [
+					"html/login/login.html",
+					"html/login/reg_protocol.html"
+				],
+				"priority": 3
+			},
+			"html/login/login.html": {
+				"href": "html/login/login.html",
+				"resources": [
+					"js/common.js",
+					"js/mui.min.js",
+					"js/jquery-1.8.0.min.js",
+					"img/login_bg.png",
+					"img/auth_code_icon.png"
+				],
+				"refer": [
+					"html/login/forget_pw.html",
+					"html/login/reg.html"
+				],
+				"priority": 2
+			},
+			"html/user/activation.html": {
+				"href": "html/user/activation.html",
+				"priority": 3
+			},
+			"html/user/member_iframe.html": {
+				"href": "html/user/member_iframe.html",
+				"priority": 4
+			},
+			"html/user/my_member.html": {
+				"href": "html/user/my_member.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html",
+					"html/user/member_iframe.html"
+				],
+				"priority": 3
+			},
+			"html/index/banner_h_iframe.html": {
+				"href": "html/index/banner_h_iframe.html",
+				"priority": 5,
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-1.8.0.min.js"
+				],
+				"refer": []
+			},
+			"html/index/bank_dot.html": {
+				"href": "html/index/bank_dot.html",
+				"priority": 7
+			},
+			"html/index/receivables_iframe.html": {
+				"href": "html/index/receivables_iframe.html",
+				"resources": [],
+				"refer": [
+					"html/index/receivables_iframe.html"
+				],
+				"priority": 8
+			},
+			"html/user/photo_rz.html": {
+				"href": "html/user/photo_rz.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html"
+				],
+				"priority": 12
+			},
+			"html/user/identity_rz.html": {
+				"href": "html/user/identity_rz.html",
+				"resources": [],
+				"refer": [
+					"html/user/identity_rz.html",
+					"html/user/photo_rz.html"
+				],
+				"priority": 11
+			},
+			"html/user/change_bankCard.html": {
+				"href": "html/user/change_bankCard.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html"
+				],
+				"priority": 12
+			},
+			"html/user/bankCard_yes.html": {
+				"href": "html/user/bankCard_yes.html",
+				"resources": [],
+				"refer": [
+					"html/user/change_bankCard.html",
+					"html/user/activation.html"
+				],
+				"priority": 12
+			},
+			"html/user/bankCard_rz.html": {
+				"href": "html/user/bankCard_rz.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html"
+				],
+				"priority": 13
+			},
+			"html/user/photo_tg.html": {
+				"href": "html/user/photo_tg.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html"
+				],
+				"priority": 14
+			},
+			"html/user/identity_yes.html": {
+				"href": "html/user/identity_yes.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html"
+				],
+				"priority": 15
+			},
+			"html/user/data_authentication.html": {
+				"href": "html/user/data_authentication.html",
+				"resources": [],
+				"refer": [
+					"html/user/identity_rz.html",
+					"html/user/bankCard_yes.html",
+					"html/user/bankCard_rz.html",
+					"html/user/photo_tg.html",
+					"html/user/identity_yes.html",
+					"html/user/photo_rz.html"
+				],
+				"priority": 11
+			},
+			"html/index/binding_card.html": {
+				"href": "html/index/binding_card.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html",
+					"html/index/binding_card.html",
+					"html/user/data_authentication.html"
+				],
+				"priority": 9
+			},
+			"html/index/receivables_record.html": {
+				"href": "html/index/receivables_record.html",
+				"priority": 10
+			},
+			"html/user/help_detailed.html": {
+				"href": "html/user/help_detailed.html",
+				"priority": 12,
+				"refer": [
+					"html/login/login.html"
+				]
+			},
+			"html/user/help_list.html": {
+				"href": "html/user/help_list.html",
+				"resources": [],
+				"refer": [
+					"html/user/help_detailed.html"
+				],
+				"priority": 13
+			},
+			"html/user/help_center.html": {
+				"href": "html/user/help_center.html",
+				"resources": [],
+				"refer": [
+					"html/user/help_detailed.html",
+					"html/user/help_list.html",
+					"html/login/login.html"
+				],
+				"priority": 12
+			},
+			"html/index/receivables.html": {
+				"href": "html/index/receivables.html",
+				"resources": [],
+				"refer": [
+					"html/index/receivables_iframe.html",
+					"html/index/binding_card.html",
+					"html/index/receivables_record.html",
+					"html/index/receivables.html",
+					"html/user/help_center.html",
+					"html/login/login.html"
+				],
+				"priority": 8
+			},
+			"html/index/repayment_list.html": {
+				"href": "html/index/repayment_list.html",
+				"resources": [],
+				"refer": [
+					"html/user/my_member.html"
+				],
+				"priority": 9
+			},
+			"html/index/edit_card.html": {
+				"href": "html/index/edit_card.html",
+				"resources": [],
+				"refer": [
+					"html/index/edit_card.html",
+					"html/user/activation.html",
+					"html/index/binding_card.html",
+					"html/user/data_authentication.html"
+				],
+				"priority": 10
+			},
+			"html/index/payment_history.html": {
+				"href": "html/index/payment_history.html",
+				"resources": [],
+				"refer": [
+					"html/index/repayment_list.html"
+				],
+				"priority": 11
+			},
+			"html/index/receivables_pay.html": {
+				"href": "html/index/receivables_pay.html",
+				"resources": [],
+				"refer": [
+					"html/index/repayment_list.html"
+				],
+				"priority": 12
+			},
+			"html/index/repayment.html": {
+				"href": "html/index/repayment.html",
+				"resources": [
+					"fonts/mui.ttf",
+					"img/radio_icon_checked.png"
+				],
+				"refer": [
+					"html/index/payment_history.html",
+					"html/index/receivables_pay.html",
+					"html/index/receivables_iframe.html",
+					"html/index/repayment_list.html",
+					"html/login/login.html"
+				],
+				"priority": 11
+			},
+			"html/index/card_info.html": {
+				"href": "html/index/card_info.html",
+				"resources": [
+					"img/ic_repayment_fail.png"
+				],
+				"refer": [
+					"html/index/bank_dot.html",
+					"html/index/receivables.html",
+					"html/index/repayment_list.html",
+					"html/index/edit_card.html",
+					"html/index/repayment.html",
+					"html/index/aaa.html",
+					"html/index/channel.html"
+				],
+				"priority": 7
+			},
+			"html/user/my_bankCard.html": {
+				"href": "html/user/my_bankCard.html",
+				"resources": [],
+				"refer": [
+					"html/login/login.html",
+					"html/index/card_info.html",
+					"html/index/binding_card.html"
+				],
+				"priority": 6
+			},
+			"html/user/xj_list.html": {
+				"href": "html/user/xj_list.html",
+				"priority": 8
+			},
+			"html/user/my_shareProfit_f.html": {
+				"href": "html/user/my_shareProfit_f.html",
+				"resources": [],
+				"refer": [
+					"html/login/login.html",
+					"html/user/xj_list.html",
+					"html/user/my_profitDetail.html",
+					"html/user/aaa.html"
+				],
+				"priority": 7
+			},
+			"html/user/my_qb.html": {
+				"href": "html/user/my_qb.html",
+				"resources": [
+					"html/user/my_shareProfit_f.html"
+				],
+				"refer": [],
+				"priority": 7
+			},
+			"html/index/card_list.html": {
+				"href": "html/index/card_list.html",
+				"resources": [],
+				"refer": [
+					"html/index/card_info.html",
+					"html/user/activation.html",
+					"html/index/repayment.html",
+					"html/index/binding_card.html",
+					"html/index/channel.html"
+				],
+				"priority": 9
+			},
+			"html/loan/loan_iframe.html": {
+				"href": "html/loan/loan_iframe.html",
+				"priority": 10
+			},
+			"html/loan/loan_details.html": {
+				"href": "html/loan/loan_details.html",
+				"resources": [],
+				"refer": [
+					"html/loan/loan_iframe.html"
+				],
+				"priority": 10
+			},
+			"html/loan/loan.html": {
+				"href": "html/loan/loan.html",
+				"resources": [],
+				"refer": [
+					"html/loan/loan_details.html"
+				],
+				"priority": 10
+			},
+			"html/apply/binding_iframe.html": {
+				"href": "html/apply/binding_iframe.html",
+				"priority": 12
+			},
+			"html/apply/binding.html": {
+				"href": "html/apply/binding.html",
+				"resources": [],
+				"refer": [
+					"html/apply/binding_iframe.html"
+				],
+				"priority": 12
+			},
+			"html/apply/bankinfo.html": {
+				"href": "html/apply/bankinfo.html",
+				"resources": [],
+				"refer": [
+					"html/apply/binding.html"
+				],
+				"priority": 12
+			},
+			"html/apply/apply_card.html": {
+				"href": "html/apply/apply_card.html",
+				"resources": [],
+				"refer": [
+					"html/apply/bankinfo.html"
+				],
+				"priority": 12
+			},
+			"html/user/link.html": {
+				"href": "html/user/link.html",
+				"resources": [],
+				"refer": [
+					"html/user/link.html",
+					"html/user/activation.html",
+					"html/user/data_authentication.html",
+					"html/user/invite_friend.html"
+				],
+				"priority": 13
+			},
+			"html/user/share_code.html": {
+				"href": "html/user/share_code.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html",
+					"html/user/data_authentication.html",
+					"html/login/login.html"
+				],
+				"priority": 14
+			},
+			"html/user/invite_friend.html": {
+				"href": "html/user/invite_friend.html",
+				"resources": [],
+				"refer": [
+					"html/user/link.html",
+					"html/user/share_code.html"
+				],
+				"priority": 13
+			},
+			"html/index/sk_list.html": {
+				"href": "html/index/sk_list.html",
+				"resources": [
+					"js/common.js",
+					"js/mui.min.js",
+					"js/jquery-1.8.0.min.js"
+				],
+				"refer": [
+					"html/index/receivables_record.html",
+					"html/index/card_info.html",
+					"html/user/activation.html",
+					"html/index/repayment.html",
+					"html/index/binding_card.html",
+					"html/index/receivables.html"
+				],
+				"priority": 14
+			},
+			"html/index/home.html": {
+				"href": "html/index/home.html",
+				"resources": [
+					"img/newnotice@3x.png"
+				],
+				"refer": [
+					"html/index/message.html",
+					"html/index/kefu.html",
+					"html/login/login.html",
+					"html/user/my_member.html",
+					"html/user/activation.html",
+					"html/index/banner_h_iframe.html",
+					"html/user/my_bankCard.html",
+					"html/user/my_qb.html",
+					"html/user/help_center.html",
+					"html/index/card_list.html",
+					"html/loan/loan.html",
+					"html/user/help_detailed.html",
+					"html/apply/apply_card.html",
+					"html/user/invite_friend.html",
+					"html/index/sk_list.html",
+					"html/index/instruction.html",
+					"html/hotloan/hotloan.html",
+					"html/bank_cards/bank_cards.html",
+					"html/user/share_code.html",
+					"html/user/rank.html"
+				],
+				"priority": 0
+			},
+			"html/user/my_shareProfit.html": {
+				"href": "html/user/my_shareProfit.html",
+				"resources": [],
+				"refer": [
+					"html/login/login.html",
+					"html/user/xj_list.html"
+				],
+				"priority": 2
+			},
+			"html/user/shareProfit.html": {
+				"href": "html/user/shareProfit.html",
+				"resources": [
+					"html/user/my_shareProfit.html"
+				],
+				"refer": [],
+				"priority": 2
+			},
+			"html/user/my_grade.html": {
+				"href": "html/user/my_grade.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html",
+					"html/user/my_member.html"
+				],
+				"priority": 4
+			},
+			"html/user/gold_detailed.html": {
+				"href": "html/user/gold_detailed.html",
+				"priority": 6
+			},
+			"html/user/my_goldCoin.html": {
+				"href": "html/user/my_goldCoin.html",
+				"resources": [],
+				"refer": [
+					"html/user/help_center.html",
+					"html/user/gold_detailed.html"
+				],
+				"priority": 5
+			},
+			"html/user/modify_pw.html": {
+				"href": "html/user/modify_pw.html",
+				"resources": [],
+				"refer": [
+					"html/login/login.html",
+					"html/login/forget_pw.html"
+				],
+				"priority": 7
+			},
+			"html/user/feedback.html": {
+				"href": "html/user/feedback.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html"
+				],
+				"priority": 8
+			},
+			"html/user/setting.html": {
+				"href": "html/user/setting.html",
+				"resources": [],
+				"refer": [
+					"html/user/modify_pw.html",
+					"html/user/feedback.html",
+					"html/user/setting.html"
+				],
+				"priority": 7
+			},
+			"html/user/agent_apply.html": {
+				"href": "html/user/agent_apply.html",
+				"priority": 11
+			},
+			"html/find/add_address.html": {
+				"href": "html/find/add_address.html",
+				"priority": 13
+			},
+			"html/find/address.html": {
+				"href": "html/find/address.html",
+				"resources": [],
+				"refer": [
+					"html/find/add_address.html"
+				],
+				"priority": 13
+			},
+			"html/user/my_discount.html": {
+				"href": "html/user/my_discount.html",
+				"priority": 14
+			},
+			"html/user/upload_head.html": {
+				"href": "html/user/upload_head.html",
+				"resources": [],
+				"refer": [
+					"html/user/activation.html"
+				],
+				"priority": 15
+			},
+			"html/user/tx_detailed.html": {
+				"href": "html/user/tx_detailed.html",
+				"priority": 17
+			},
+			"html/user/withdraw_cash.html": {
+				"href": "html/user/withdraw_cash.html",
+				"resources": [],
+				"refer": [
+					"html/index/kefu.html",
+					"html/user/tx_detailed.html",
+					"html/index/binding_card.html",
+					"html/login/login.html"
+				],
+				"priority": 16
+			},
+			"html/user/my_trade.html": {
+				"href": "html/user/my_trade.html",
+				"priority": 17,
+				"resources": [
+					"css/my_trade.css",
+					"js/common.js",
+					"js/mui.min.js",
+					"js/jquery-1.8.0.min.js",
+					"css/mui.min.css",
+					"css/style.css",
+					"img/no_creditbill_icon.png"
+				],
+				"refer": []
+			},
+			"html/user/my_rate.html": {
+				"href": "html/user/my_rate.html",
+				"priority": 19
+			},
+			"html/user/user.html": {
+				"href": "html/user/user.html",
+				"resources": [
+					"img/user_5@2x.png",
+					"img/user_6@2x.png",
+					"img/user_1@2x.png",
+					"img/user_4@2x.png",
+					"img/user_2@2x.png",
+					"img/user_7@2x.png",
+					"img/user_8@2x.png",
+					"img/user_3@2x.png"
+				],
+				"refer": [
+					"html/login/login.html",
+					"html/user/my_grade.html",
+					"html/user/my_goldCoin.html",
+					"html/user/activation.html",
+					"html/user/setting.html",
+					"html/user/share_code.html",
+					"html/user/my_bankCard.html",
+					"html/user/my_member.html",
+					"html/user/agent_apply.html",
+					"html/user/data_authentication.html",
+					"html/find/address.html",
+					"html/user/my_discount.html",
+					"html/user/upload_head.html",
+					"html/user/withdraw_cash.html",
+					"html/user/my_trade.html",
+					"html/user/help_center.html",
+					"html/user/my_rate.html",
+					"html/user/invite_friend.html",
+					"html/user/my_qb.html",
+					"html/user/my_profit.html"
+				],
+				"priority": 3
+			},
+			"index.html": {
+				"href": "index.html",
+				"resources": [
+					"html/index/home.html",
+					"img/nav_4-1@3x.png",
+					"img/nav_3-2@3x.png",
+					"img/nav_2-2@3x.png",
+					"css/mui.min.css",
+					"img/nav_1-2@3x.png",
+					"img/nav_3-1@3x.png",
+					"img/nav_2-1@3x.png",
+					"img/nav_1-1@3x.png",
+					"img/nav_4-2@3x.png",
+					"html/user/user.html",
+					"html/user/my_bankCard.html"
+				],
+				"refer": [
+					"html/user/shareProfit.html",
+					"html/share/share.html",
+					"html/index/banner.html"
+				],
+				"priority": 0
+			},
+			"html/share/share.html": {
+				"resources": [],
+				"refer": [
+					"html/login/login.html",
+					"html/user/help_center.html",
+					"html/user/my_bankCard.html",
+					"html/index/receivables.html",
+					"html/index/repayment.html",
+					"html/user/share_code.html",
+					"html/index/card_list.html",
+					"html/index/sk_list.html",
+					"html/login/reg.html"
+				],
+				"priority": 0
+			},
+			"html/index/banner.html": {
+				"resources": [],
+				"refer": [
+					"index.html"
+				],
+				"priority": 0
+			},
+			"html/hotloan/hotloan.html": {
+				"resources": [],
+				"refer": [
+					"html/hotloan/hotloan.detail.html"
+				],
+				"priority": 0
+			},
+			"html/bank_cards/bank_cards.html": {
+				"resources": [],
+				"refer": [
+					"html/bank_cards/bankCard_detail.html",
+					"html/bank_cards/card_reg.html"
+				],
+				"priority": 0
+			},
+			"html/user/my_profitDetail.html": {
+				"resources": [
+					"js/common.js",
+					"js/mui.min.js",
+					"js/jquery-1.8.0.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/index/channel.html": {
+				"resources": [],
+				"refer": [
+					"html/index/repayment.html",
+					"html/index/aaa.html",
+					"html/index/payment.html"
+				],
+				"priority": 0
+			},
+			"html/index/aaa.html": {
+				"resources": [],
+				"refer": [
+					"html/index/repayment_list.html",
+					"html/index/payment_history.html"
+				],
+				"priority": 0
+			},
+			"html/user/rank.html": {
+				"resources": [
+					"img/diamond.png",
+					"img/platinum.png",
+					"img/agent.png",
+					"img/icon-wx.png",
+					"fonts/impact.ttf",
+					"img/icon-zfb.png",
+					"fonts/HYZheZhiTiJ.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/bank_cards/card_reg.html": {
+				"resources": [
+					"img/credit_safe.png"
+				],
+				"refer": [
+					"html/login/reg_protocol.html",
+					"html/bank_cards/bankCard_detail.html"
+				],
+				"priority": 0
+			},
+			"html/bank_cards/bankCard_detail.html": {
+				"resources": [],
+				"refer": [
+					"index.html",
+					"html/index/home.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"html/apply/apply.html",
+				"html/index/my_voucher.html",
+				"html/user/applyCard_detailed.html",
+				"html/user/sk_profit.html",
+				"html/find/shop_order.html",
+				"html/find/shop_mall.html",
+				"html/user/sj_profit.html",
+				"html/index/preview_list.html",
+				"html/find/product_details.html",
+				"html/user/hk_profit.html",
+				"html/find/find.html",
+				"html/index/my_wallet.html",
+				"html/wallet/wallet.html",
+				"html/find/mall_list.html",
+				"html/user/loan_detailed.html",
+				"html/user/add_bankCard.html"
+			]
+		}
+	}
+}

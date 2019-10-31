@@ -1,0 +1,715 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/home.css" />
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_812297_gn0v2ir2aqs.css" />
+		<style>
+			.mui-popover{
+				top:50%;
+				left:50%;
+				transform: translate(-50%,-50%);
+				background-color: transparent;
+				width:280px;
+				height:370px;
+				text-align: center;
+			}
+			.mui-popover .pic{
+				width: 100%;
+				height: 100%;
+			}
+			.mui-popover .popover_close{
+				margin-top:10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<div class="statusbarHeight">&nbsp;</div>
+			<div class="help">
+				<img src="../../img/help@3x.png" /> 
+			</div>
+			<h1 class="mui-title">
+	    	首页
+	    	</h1>
+			<div class="message">
+				<img src="../../img/notice@2x.png" />
+			</div>
+		</header>            <!--头部结束-->
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+
+				</div>
+			</div>           <!--banner图结束-->
+
+			<div class="notice">
+				<div class="left icon_gg">
+					<span class="text">最新消息：</span><span class="hot">热门</span>
+				</div>
+				<div class="notice_info left">
+					<ul class="notice-txt">
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>        	<!--公告结束-->
+			<div class="mui-grid">
+				<div class="sh_tab">
+					<ul>
+						<li class="hk" title="1">
+							<div class="wrap">
+								<div class="top">「智能还款」</div>
+								<div class="bottom">还款安全无忧</div>
+							</div>
+						</li>
+						<li class="sk" title="2">
+							<div class="wrap">
+								<div class="top">「快捷收款」</div>
+								<div class="bottom">收款方便快捷</div>
+							</div>
+						</li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+			</div>
+
+			<div class="grid">
+				<ul class="grid_list">
+					<li title="9">
+						<div class="grid_img">
+							<img src="../../img/icon_h_1@3x.png" />
+						</div>
+						<p>申请信用卡</p>
+					</li>
+					<li title="2">
+						<div class="grid_img">
+							<img src="../../img/icon_h_2@3x.png" />
+						</div>
+						<p>贷款</p>
+					</li>
+					<li title="3">
+						<div class="grid_img">
+							<img src="../../img/icon_h_3@3x.png" />
+						</div>
+						<p>积分兑换</p>
+					</li>
+					<li title="4">
+						<div class="grid_img">
+							<img src="../../img/icon_h_4@3x.png" />
+						</div>
+						<p>使用说明</p>
+					</li>
+					<li title="5">
+						<div class="grid_img">
+							<img src="../../img/icon_h_5@3x.png" />
+						</div>
+						<p>升级</p>
+					</li>
+					<li title="7">
+						<div class="grid_img">
+							<img src="../../img/icon_h_6@3x.png" />
+						</div>
+						<p>客服</p>
+					</li>
+					<li title="8">
+						<div class="grid_img">
+							<img src="../../img/icon_h_7@3x.png" />
+						</div>
+						<p>帮助</p>
+					</li>
+					<li title="6">
+						<div class="grid_img">
+							<img src="../../img/icon_h_8@3x.png" />
+						</div>
+						<p>邀请朋友</p>
+					</li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+
+			<div class="daily">
+				<div class="title">
+					<div class="left">
+						最新资讯
+					</div>
+					<!-- <div class="right">
+						<span class="iconfont icon-mjiantou"></span>
+					</div> -->
+					<div class="clear"></div>
+				</div>
+				<div class="daily_content">
+					<h1>卡灵通-您身边的财务优化专家</h1>
+					<div class="content">
+						卡灵通信用卡管家，信用卡还款专属APP， 1.无需手动操作，自动执行还款计划； 2.账单统一管理，从此告别信用卡逾期。 让你从此还卡无忧，引领你走上更智能、更安全的信用卡还款新时代！
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 弹窗 -->
+		<div id="popover" class="mui-popover">
+			<img src="../../img/popover.png" alt="" class="pic">
+			<div class="popover_close">
+				<img src="../../img/popover_close.png" alt="" width="25" height="25">
+			</div>
+		</div>
+
+
+		<div class="mengban"></div>
+		<div class="update-view">
+			<div class="updateProDiv">升级中，请勿退出或执行其他操作:
+				<progress value="" max="" id="proDownFile"></progress>
+				<span class="persent"></span>
+			</div>
+		</div>
+		<script src="../../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var tokens = localStorage.getItem("token");
+			console.log(tokens)
+			mui.plusReady(function() {
+				mui.init({
+					hardwareAccelerated: true
+				});
+				var StatusbarHeight = plus.navigator.getStatusbarHeight();
+				var headerH = StatusbarHeight + 44;
+				$(".statusbarHeight").css("height", StatusbarHeight);
+				$("header").css("height", headerH);
+				$(".mui-content").css("padding-top", headerH);
+				//				plus.nativeUI.showWaiting("安全检测中，请等待");
+				window.addEventListener('message', function(e) { //执行刷新
+					getnumber();
+				});
+				window.addEventListener('login', function(e) { //执行刷新
+					getnumber();
+					info();
+				});
+
+				window.addEventListener('tap', function(e) {
+                     e.target.className == 'mui-backdrop mui-active' && e.stopPropagation();
+                },true);
+
+				$(".mui-popover .pic").click(function(){
+					if(!tokens) {
+						mui.alert("请先登录", "提示", "", function() {
+							mui.openWindow({
+								url: "../login/login.html",
+								id: "login",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+
+						}, "div")
+					}else{
+						mui(".mui-popover").popover('hide');
+						mui.openWindow({
+							url: "../user/share_code.html",
+							id: "share_code",
+							show: {
+								autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							},
+							extras: {
+								title: "1"
+							},
+							waiting: {
+								autoShow: true, //自动显示等待框，默认为true
+								title: '', //等待对话框上显示的提示内容
+							}
+						})
+					}
+					
+				})
+
+				$(".mui-popover").on("click",".popover_close",function(){
+					mui(".mui-popover").popover('hide');
+				})
+				mui(".mui-popover").popover('toggle');
+
+
+				mui(".mui-slider").slider({
+					interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
+				});
+				var tokensss = tokens;
+				setInterval(function() {
+					tokens = localStorage.getItem("token");
+					if(tokensss != tokens) {
+						getnumber();
+						info();
+						tokensss = tokens;
+					};
+				}, 100);
+
+				/*更新APP*/
+
+				checkUpdate()
+
+				/*banner*/
+				$.ajax({
+					type: "get",
+					url: site_app + "/api/Img/index",
+					data: {
+						type: "2"
+					},
+					dataType: "json",
+					success: function(e) {
+						if(e.error == 0) {
+							var img = '';
+							var ImgList = e.data;
+							img += '<div class="mui-slider-item mui-slider-item-duplicate" title="' + ImgList[0].img_url + '">' +
+								'<img src="' + ImgList[0].img_img + '" style="display:block">' +
+								'</div>';
+							for(var i = 0; i < ImgList.length; i++) {
+								img += '<div class="mui-slider-item" title="' + ImgList[i].img_url + '">' +
+									'<img src="' + ImgList[i].img_img + '" style="display:block">' +
+									'</div>';
+							}
+							img += '<div class="mui-slider-item mui-slider-item-duplicate" title="' + ImgList[0].img_url + '">' +
+								'<img src="' + ImgList[0].img_img + '" style="display:block">' +
+								'</div>';
+							$(".mui-slider-group").html(img);
+							var gallery = mui('.mui-slider');
+							gallery.slider();
+							mui(".mui-slider").slider({
+								interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
+							});
+						}
+					}
+				});
+				/*获取未读消息*/
+				getnumber();
+
+				//点击banner图事件
+				// $(".mui-slider-group").on("click", ".mui-slider-item", function(e) {
+				// 	var title = $(this).attr("title");
+				// 	mui.openWindow({
+				// 		url: "banner_h_iframe.html",
+				// 		id: "banner_h_iframe",
+				// 		show: {
+				// 			autoShow: true, //页面loaded事件发生后自动显示，默认为true
+				// 		},
+				// 		extras: {
+				// 			urls: title
+				// 		},
+				// 		waiting: {
+				// 			autoShow: true, //自动显示等待框，默认为true
+				// 			title: '', //等待对话框上显示的提示内容
+				// 		}
+				// 	})
+				// })
+				/*公告文字上下轮播*/
+				article();
+
+				$(".notice-txt").on("click", "li", function() {
+					var title = $(this).attr("title");
+					mui.openWindow({
+						url: "../user/help_detailed.html",
+						id: "help_detailed",
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							ids: title
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: '', //等待对话框上显示的提示内容
+						}
+					})
+				});
+
+				$(".help").click(function() {
+					if(!tokens) {
+						mui.alert("请先登录", "提示", "", function() {
+							mui.openWindow({
+								url: "../login/login.html",
+								id: "login",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+
+						}, "div")
+					} else {
+						mui.openWindow({
+							url: "../user/help_center.html",
+							id: "help_center",
+							show: {
+								autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							},
+							waiting: {
+								autoShow: true, //自动显示等待框，默认为true
+								title: '', //等待对话框上显示的提示内容
+							}
+						})
+					}
+
+				})
+				$(".message").click(function() {
+					if(!tokens) {
+						mui.alert("请先登录", "提示", "", function() {
+							mui.openWindow({
+								url: "../login/login.html",
+								id: "login",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						}, "div")
+					} else {
+						mui.openWindow({
+							url: "message.html",
+							id: "message",
+							show: {
+								autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							},
+							waiting: {
+								autoShow: true, //自动显示等待框，默认为true
+								title: '', //等待对话框上显示的提示内容
+							}
+						})
+					}
+
+				})
+
+				/*获取用户信息*/
+				info();
+				$(".sh_tab li").click(function() {
+					var title = $(this).attr("title");
+					if(!tokens) {
+						mui.alert("请先登录", "提示", "", function() {
+							mui.openWindow({
+								url: "../login/login.html",
+								id: "login",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						}, "div")
+					} else {
+						if(title == 1) {
+							mui.openWindow({
+								url: "card_list.html",
+								id: "card_list",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								extras: {
+									title: "1"
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						} else if(title == 2) {
+							mui.openWindow({
+								url: "sk_list.html",
+								id: "sk_list",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								extras: {
+									title: "2"
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						}
+					}
+
+				})
+
+				$(".grid_list li").click(function() {
+					var title = $(this).attr("title");
+					if(!tokens) {
+						mui.alert("请先登录", "提示", "", function() {
+							mui.openWindow({
+								url: "../login/login.html",
+								id: "login",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						}, "div")
+					} else {
+						if(title == 1) {
+							mui.openWindow({
+								url: "../apply/apply_card.html",
+								id: "apply_card",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						} else if(title == 2) {
+							mui.openWindow({
+								//url: "../loan/loan.html",
+								url: "../hotloan/hotloan.html",
+								id: "hotloan",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								extras:{
+                                    card_url:title
+                                },
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+							//mui.alert('升级中，敬请期待！', '提示', '', '', 'div');
+						} else if(title == 3) {
+							// mui.openWindow({
+							// 	//url: "../loan/loan.html",
+							// 	url: "../exchange/exchange.html",
+							// 	id: "exchange",
+							// 	show: {
+							// 		autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							// 	},
+							// 	waiting: {
+							// 		autoShow: true, //自动显示等待框，默认为true
+							// 		title: '', //等待对话框上显示的提示内容
+							// 	}
+							// })
+							mui.alert('升级中，敬请期待！', '提示', '', '', 'div');
+						} else if(title == 4) {
+							mui.openWindow({
+								url: "../index/instruction.html",
+								id: "my_bankCard",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								extras: {
+									title: "1"
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						} 
+						else if(title == 9) {
+							mui.openWindow({
+								url: "../bank_cards/bank_cards.html",
+								id: "bank_cards",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								extras: {
+									title: "1"
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						} else if(title == 5) {
+							mui.openWindow({
+								url: "../user/rank.html",
+								id: "rank",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						} else if(title == 6) {
+							mui.openWindow({
+								url: "../user/invite_friend.html",
+								id: "invite_friend",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						} else if(title == 7) {
+							mui.openWindow({
+								url: "../index/kefu.html",
+								id: "kefu",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						} else if(title == 8) {
+							mui.openWindow({
+								url: "../user/help_center.html",
+								id: "help_center",
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: '', //等待对话框上显示的提示内容
+								}
+							})
+						}
+					}
+				});
+				$("body").ajaxStop(function() {
+					plus.nativeUI.closeWaiting();
+					setTimeout(function(){
+						plus.navigator.closeSplashscreen();
+					},3000);
+				});
+			});
+
+			function getnumber() {
+				$.ajax({
+					type: "post",
+					url: site_app + "/api/Message/getnumber",
+					data: {
+						token: tokens
+					},
+					dataType: "json",
+					success: function(e) {
+						if(e.error == 0) {
+							$(".message img").attr("src", "../../img/notice.png")
+						} else if(e.error == 1) {
+							$(".message img").attr("src", "../../img/notice@2x.png")
+						}
+					}
+				});
+			};
+
+			function article() {
+				var pages = 1;
+				$.ajax({
+					url: site_app + "/api/open/article",
+					type: "post",
+					data: {
+						token: tokens,
+						type: "1",
+						page: pages
+					},
+					dataType: "json",
+					success: function(e) {
+						console.log(e)
+						if(e.error == 0) {
+							/*顶部滚动信息*/
+							var datas = e.data.data;
+							for(var a = 0; a < datas.length; a++) {
+								var li = "<li title='" + datas[a].article_id + "'>" + datas[a].article_title + "</li>";
+								$(".notice-txt").append(li);
+							}
+						} else if(e.error == 1) {
+							$(".notice-txt").html("");
+						}
+					}
+				});
+				if($(".notice-txt").html() != "") {
+					notice($('.notice-txt'));
+				}
+			};
+			
+			function info() {
+				$.ajax({
+					url: site_app + "/api/my/info",
+					type: "post",
+					data: {
+						token: tokens
+					},
+					dataType: "json",
+					success: function(e) {
+						if(e.error == 0) {
+							if(e.data.user_isactivation == 0) {
+
+							} else {
+								mui.alert('请激活账户', '提示', '', function() {
+									mui.openWindow({
+										url: "../user/activation.html",
+										id: "activation",
+										show: {
+											autoShow: true, //页面loaded事件发生后自动显示，默认为true
+										},
+										waiting: {
+											autoShow: true, //自动显示等待框，默认为true
+											title: '', //等待对话框上显示的提示内容
+										}
+									})
+								}, 'div');
+							}
+
+						}
+					}
+				});
+			};
+
+			function notice(ul) {
+				var num = 0;
+				setInterval(function() {
+					num++;
+					if(num == ul.find('li').length || ul.find('li').length == 0) {  
+						num = 0;
+						ul.css({
+							marginTop: 0
+						});
+					}
+					$('.notice-txt').animate({
+						marginTop: -40 * num
+					}, 400);
+				}, 4000);
+
+			};
+			//禁用安卓返回键
+			var first;
+			mui.back = function() {
+				//首次按键，提示‘再按一次退出应用’
+				if(!first) {
+					first = new Date().getTime();
+					mui.toast('再按一次退出应用');
+					setTimeout(function() {
+						first = null;
+					}, 1000);
+				} else {
+					if(new Date().getTime() - first < 1000) {
+						plus.runtime.quit();
+						localStorage.removeItem("sj");
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

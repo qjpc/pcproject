@@ -1,0 +1,797 @@
+{
+  "html/index/message_details.html": {
+    "href": "html/index/message_details.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/index/message.html": {
+    "href": "html/index/message.html",
+    "resources": [],
+    "refer": [
+      "html/index/message_details.html"
+    ],
+    "priority": 0
+  },
+  "html/index/kefu.html": {
+    "href": "html/index/kefu.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/login/forget_pw.html": {
+    "href": "html/login/forget_pw.html",
+    "resources": [],
+    "refer": [
+      "html/login/login.html"
+    ],
+    "priority": 0
+  },
+  "html/login/reg_protocol.html": {
+    "href": "html/login/reg_protocol.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/login/reg.html": {
+    "href": "html/login/reg.html",
+    "resources": [],
+    "refer": [
+      "html/login/login.html",
+      "html/login/reg_protocol.html"
+    ],
+    "priority": 0
+  },
+  "html/login/login.html": {
+    "href": "html/login/login.html",
+    "resources": [
+      "js/common.js",
+      "js/mui.min.js",
+      "js/jquery-1.8.0.min.js",
+      "img/login_bg.png",
+      "img/auth_code_icon.png"
+    ],
+    "refer": [
+      "html/login/forget_pw.html",
+      "html/login/reg.html"
+    ],
+    "priority": 0
+  },
+  "html/user/activation.html": {
+    "href": "html/user/activation.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/user/member_iframe.html": {
+    "href": "html/user/member_iframe.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/user/my_member.html": {
+    "href": "html/user/my_member.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html",
+      "html/user/member_iframe.html"
+    ],
+    "priority": 0
+  },
+  "html/index/banner_h_iframe.html": {
+    "href": "html/index/banner_h_iframe.html",
+    "priority": 0,
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-1.8.0.min.js"
+    ],
+    "refer": []
+  },
+  "html/index/bank_dot.html": {
+    "href": "html/index/bank_dot.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/index/receivables_iframe.html": {
+    "href": "html/index/receivables_iframe.html",
+    "resources": [],
+    "refer": [
+      "html/index/receivables_iframe.html"
+    ],
+    "priority": 0
+  },
+  "html/user/photo_rz.html": {
+    "href": "html/user/photo_rz.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html"
+    ],
+    "priority": 0
+  },
+  "html/user/identity_rz.html": {
+    "href": "html/user/identity_rz.html",
+    "resources": [],
+    "refer": [
+      "html/user/identity_rz.html",
+      "html/user/photo_rz.html"
+    ],
+    "priority": 0
+  },
+  "html/user/change_bankCard.html": {
+    "href": "html/user/change_bankCard.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html"
+    ],
+    "priority": 0
+  },
+  "html/user/bankCard_yes.html": {
+    "href": "html/user/bankCard_yes.html",
+    "resources": [],
+    "refer": [
+      "html/user/change_bankCard.html",
+      "html/user/activation.html"
+    ],
+    "priority": 0
+  },
+  "html/user/bankCard_rz.html": {
+    "href": "html/user/bankCard_rz.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html"
+    ],
+    "priority": 0
+  },
+  "html/user/photo_tg.html": {
+    "href": "html/user/photo_tg.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html"
+    ],
+    "priority": 0
+  },
+  "html/user/identity_yes.html": {
+    "href": "html/user/identity_yes.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html"
+    ],
+    "priority": 0
+  },
+  "html/user/data_authentication.html": {
+    "href": "html/user/data_authentication.html",
+    "resources": [],
+    "refer": [
+      "html/user/identity_rz.html",
+      "html/user/bankCard_yes.html",
+      "html/user/bankCard_rz.html",
+      "html/user/photo_tg.html",
+      "html/user/identity_yes.html",
+      "html/user/photo_rz.html"
+    ],
+    "priority": 0
+  },
+  "html/index/binding_card.html": {
+    "href": "html/index/binding_card.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html",
+      "html/index/binding_card.html",
+      "html/user/data_authentication.html"
+    ],
+    "priority": 0
+  },
+  "html/index/receivables_record.html": {
+    "href": "html/index/receivables_record.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/user/help_detailed.html": {
+    "href": "html/user/help_detailed.html",
+    "priority": 0,
+    "refer": [
+      "html/login/login.html"
+    ],
+    "resources": []
+  },
+  "html/user/help_list.html": {
+    "href": "html/user/help_list.html",
+    "resources": [
+      "js/common.js",
+      "js/mui.min.js",
+      "js/jquery-1.8.0.min.js"
+    ],
+    "refer": [
+      "html/user/help_detailed.html"
+    ],
+    "priority": 0
+  },
+  "html/user/help_center.html": {
+    "href": "html/user/help_center.html",
+    "resources": [],
+    "refer": [
+      "html/user/help_detailed.html",
+      "html/user/help_list.html",
+      "html/login/login.html"
+    ],
+    "priority": 0
+  },
+  "html/index/receivables.html": {
+    "href": "html/index/receivables.html",
+    "resources": [],
+    "refer": [
+      "html/index/receivables_iframe.html",
+      "html/index/binding_card.html",
+      "html/index/receivables_record.html",
+      "html/index/receivables.html",
+      "html/user/help_center.html",
+      "html/login/login.html"
+    ],
+    "priority": 0
+  },
+  "html/index/repayment_list.html": {
+    "href": "html/index/repayment_list.html",
+    "resources": [],
+    "refer": [
+      "html/user/my_member.html"
+    ],
+    "priority": 0
+  },
+  "html/index/edit_card.html": {
+    "href": "html/index/edit_card.html",
+    "resources": [],
+    "refer": [
+      "html/index/edit_card.html",
+      "html/user/activation.html",
+      "html/index/binding_card.html",
+      "html/user/data_authentication.html"
+    ],
+    "priority": 0
+  },
+  "html/index/payment_history.html": {
+    "href": "html/index/payment_history.html",
+    "resources": [],
+    "refer": [
+      "html/index/repayment_list.html"
+    ],
+    "priority": 0
+  },
+  "html/index/receivables_pay.html": {
+    "href": "html/index/receivables_pay.html",
+    "resources": [],
+    "refer": [
+      "html/index/repayment_list.html"
+    ],
+    "priority": 0
+  },
+  "html/index/repayment.html": {
+    "href": "html/index/repayment.html",
+    "resources": [
+      "fonts/mui.ttf",
+      "img/radio_icon_checked.png"
+    ],
+    "refer": [
+      "html/index/payment_history.html",
+      "html/index/receivables_pay.html",
+      "html/index/receivables_iframe.html",
+      "html/index/repayment_list.html",
+      "html/login/login.html"
+    ],
+    "priority": 0
+  },
+  "html/index/card_info.html": {
+    "href": "html/index/card_info.html",
+    "resources": [
+      "img/ic_repayment_fail.png"
+    ],
+    "refer": [
+      "html/index/bank_dot.html",
+      "html/index/receivables.html",
+      "html/index/repayment_list.html",
+      "html/index/edit_card.html",
+      "html/index/repayment.html",
+      "html/index/aaa.html",
+      "html/index/channel.html"
+    ],
+    "priority": 0
+  },
+  "html/user/my_bankCard.html": {
+    "href": "html/user/my_bankCard.html",
+    "resources": [
+      "css/style.css"
+    ],
+    "refer": [
+      "html/login/login.html",
+      "html/index/card_info.html",
+      "html/index/binding_card.html"
+    ],
+    "priority": 0
+  },
+  "html/user/xj_list.html": {
+    "href": "html/user/xj_list.html",
+    "priority": 0,
+    "resources": [
+      "js/common.js",
+      "js/mui.min.js",
+      "js/jquery-1.8.0.min.js"
+    ],
+    "refer": []
+  },
+  "html/user/my_shareProfit_f.html": {
+    "href": "html/user/my_shareProfit_f.html",
+    "resources": [],
+    "refer": [
+      "html/login/login.html",
+      "html/user/xj_list.html",
+      "html/user/my_profitDetail.html",
+      "html/user/aaa.html"
+    ],
+    "priority": 0
+  },
+  "html/user/my_qb.html": {
+    "href": "html/user/my_qb.html",
+    "resources": [
+      "html/user/my_shareProfit_f.html"
+    ],
+    "refer": [
+      "html/user/my_shareProfit_f.html"
+    ],
+    "priority": 0
+  },
+  "html/index/card_list.html": {
+    "href": "html/index/card_list.html",
+    "resources": [],
+    "refer": [
+      "html/index/card_info.html",
+      "html/user/activation.html",
+      "html/index/repayment.html",
+      "html/index/binding_card.html",
+      "html/index/channel.html"
+    ],
+    "priority": 0
+  },
+  "html/loan/loan_iframe.html": {
+    "href": "html/loan/loan_iframe.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/loan/loan_details.html": {
+    "href": "html/loan/loan_details.html",
+    "resources": [],
+    "refer": [
+      "html/loan/loan_iframe.html"
+    ],
+    "priority": 0
+  },
+  "html/loan/loan.html": {
+    "href": "html/loan/loan.html",
+    "resources": [],
+    "refer": [
+      "html/loan/loan_details.html"
+    ],
+    "priority": 0
+  },
+  "html/apply/binding_iframe.html": {
+    "href": "html/apply/binding_iframe.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/apply/binding.html": {
+    "href": "html/apply/binding.html",
+    "resources": [],
+    "refer": [
+      "html/apply/binding_iframe.html"
+    ],
+    "priority": 0
+  },
+  "html/apply/bankinfo.html": {
+    "href": "html/apply/bankinfo.html",
+    "resources": [],
+    "refer": [
+      "html/apply/binding.html"
+    ],
+    "priority": 0
+  },
+  "html/apply/apply_card.html": {
+    "href": "html/apply/apply_card.html",
+    "resources": [],
+    "refer": [
+      "html/apply/bankinfo.html"
+    ],
+    "priority": 0
+  },
+  "html/user/link.html": {
+    "href": "html/user/link.html",
+    "resources": [],
+    "refer": [
+      "html/user/link.html",
+      "html/user/activation.html",
+      "html/user/data_authentication.html",
+      "html/user/invite_friend.html"
+    ],
+    "priority": 0
+  },
+  "html/user/share_code.html": {
+    "href": "html/user/share_code.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html",
+      "html/user/data_authentication.html",
+      "html/login/login.html"
+    ],
+    "priority": 0
+  },
+  "html/user/invite_friend.html": {
+    "href": "html/user/invite_friend.html",
+    "resources": [],
+    "refer": [
+      "html/user/link.html",
+      "html/user/share_code.html"
+    ],
+    "priority": 0
+  },
+  "html/index/sk_list.html": {
+    "href": "html/index/sk_list.html",
+    "resources": [
+      "js/common.js",
+      "js/mui.min.js",
+      "js/jquery-1.8.0.min.js"
+    ],
+    "refer": [
+      "html/index/receivables_record.html",
+      "html/index/card_info.html",
+      "html/user/activation.html",
+      "html/index/repayment.html",
+      "html/index/binding_card.html",
+      "html/index/receivables.html"
+    ],
+    "priority": 0
+  },
+  "html/index/home.html": {
+    "href": "html/index/home.html",
+    "resources": [
+      "img/newnotice@3x.png",
+      "css/style.css"
+    ],
+    "refer": [
+      "html/index/message.html",
+      "html/index/kefu.html",
+      "html/login/login.html",
+      "html/user/my_member.html",
+      "html/user/activation.html",
+      "html/index/banner_h_iframe.html",
+      "html/user/my_bankCard.html",
+      "html/user/my_qb.html",
+      "html/user/help_center.html",
+      "html/index/card_list.html",
+      "html/loan/loan.html",
+      "html/user/help_detailed.html",
+      "html/apply/apply_card.html",
+      "html/user/invite_friend.html",
+      "html/index/sk_list.html",
+      "html/index/instruction.html",
+      "html/hotloan/hotloan.html",
+      "html/aaa/aaa.html",
+      "html/bank_cards/bank_cards.html",
+      "html/exchange/exchange.html",
+      "html/user/share_code.html",
+      "html/user/rank.html"
+    ],
+    "priority": 0
+  },
+  "html/user/my_shareProfit.html": {
+    "href": "html/user/my_shareProfit.html",
+    "resources": [],
+    "refer": [
+      "html/login/login.html",
+      "html/user/xj_list.html"
+    ],
+    "priority": 0
+  },
+  "html/user/shareProfit.html": {
+    "href": "html/user/shareProfit.html",
+    "resources": [
+      "html/user/my_shareProfit.html"
+    ],
+    "refer": [
+      "html/user/my_shareProfit.html"
+    ],
+    "priority": 0
+  },
+  "html/user/my_grade.html": {
+    "href": "html/user/my_grade.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html",
+      "html/user/my_member.html"
+    ],
+    "priority": 0
+  },
+  "html/user/gold_detailed.html": {
+    "href": "html/user/gold_detailed.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/user/my_goldCoin.html": {
+    "href": "html/user/my_goldCoin.html",
+    "resources": [],
+    "refer": [
+      "html/user/help_center.html",
+      "html/user/gold_detailed.html"
+    ],
+    "priority": 0
+  },
+  "html/user/modify_pw.html": {
+    "href": "html/user/modify_pw.html",
+    "resources": [],
+    "refer": [
+      "html/login/login.html",
+      "html/login/forget_pw.html"
+    ],
+    "priority": 0
+  },
+  "html/user/feedback.html": {
+    "href": "html/user/feedback.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html"
+    ],
+    "priority": 0
+  },
+  "html/user/setting.html": {
+    "href": "html/user/setting.html",
+    "resources": [],
+    "refer": [
+      "html/user/modify_pw.html",
+      "html/user/feedback.html",
+      "html/user/setting.html"
+    ],
+    "priority": 0
+  },
+  "html/user/agent_apply.html": {
+    "href": "html/user/agent_apply.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/find/add_address.html": {
+    "href": "html/find/add_address.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/find/address.html": {
+    "href": "html/find/address.html",
+    "resources": [],
+    "refer": [
+      "html/find/add_address.html"
+    ],
+    "priority": 0
+  },
+  "html/user/my_discount.html": {
+    "href": "html/user/my_discount.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/user/upload_head.html": {
+    "href": "html/user/upload_head.html",
+    "resources": [],
+    "refer": [
+      "html/user/activation.html"
+    ],
+    "priority": 0
+  },
+  "html/user/tx_detailed.html": {
+    "href": "html/user/tx_detailed.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/user/withdraw_cash.html": {
+    "href": "html/user/withdraw_cash.html",
+    "resources": [],
+    "refer": [
+      "html/index/kefu.html",
+      "html/user/tx_detailed.html",
+      "html/index/binding_card.html",
+      "html/login/login.html"
+    ],
+    "priority": 0
+  },
+  "html/user/my_trade.html": {
+    "href": "html/user/my_trade.html",
+    "priority": 0,
+    "resources": [
+      "css/my_trade.css",
+      "js/common.js",
+      "js/mui.min.js",
+      "js/jquery-1.8.0.min.js",
+      "css/mui.min.css",
+      "css/style.css",
+      "img/no_creditbill_icon.png"
+    ],
+    "refer": []
+  },
+  "html/user/my_rate.html": {
+    "href": "html/user/my_rate.html",
+    "priority": 0,
+    "resources": [],
+    "refer": []
+  },
+  "html/user/user.html": {
+    "href": "html/user/user.html",
+    "resources": [
+      "img/user_5@2x.png",
+      "img/user_6@2x.png",
+      "img/user_1@2x.png",
+      "img/user_4@2x.png",
+      "img/user_2@2x.png",
+      "img/user_7@2x.png",
+      "img/user_8@2x.png",
+      "img/user_3@2x.png",
+      "css/user.css",
+      "css/style.css"
+    ],
+    "refer": [
+      "html/login/login.html",
+      "html/user/my_grade.html",
+      "html/user/my_goldCoin.html",
+      "html/user/activation.html",
+      "html/user/setting.html",
+      "html/user/share_code.html",
+      "html/user/my_bankCard.html",
+      "html/user/my_member.html",
+      "html/user/agent_apply.html",
+      "html/user/data_authentication.html",
+      "html/find/address.html",
+      "html/user/my_discount.html",
+      "html/user/upload_head.html",
+      "html/user/withdraw_cash.html",
+      "html/user/my_trade.html",
+      "html/user/help_center.html",
+      "html/user/my_rate.html",
+      "html/user/invite_friend.html",
+      "html/user/my_qb.html",
+      "html/user/my_profit.html"
+    ],
+    "priority": 0
+  },
+  "index.html": {
+    "href": "index.html",
+    "resources": [
+      "html/index/home.html",
+      "img/nav_4-1@3x.png",
+      "img/nav_3-2@3x.png",
+      "img/nav_2-2@3x.png",
+      "css/mui.min.css",
+      "img/nav_1-2@3x.png",
+      "img/nav_3-1@3x.png",
+      "img/nav_2-1@3x.png",
+      "img/nav_1-1@3x.png",
+      "img/nav_4-2@3x.png",
+      "html/user/user.html",
+      "html/user/my_bankCard.html"
+    ],
+    "refer": [
+      "html/index/home.html",
+      "html/user/my_bankCard.html",
+      "html/user/shareProfit.html",
+      "html/user/user.html",
+      "html/share/share.html",
+      "html/index/banner.html"
+    ],
+    "priority": 0
+  },
+  "html/share/share.html": {
+    "refer": [
+      "html/login/login.html",
+      "html/user/help_center.html",
+      "html/user/my_bankCard.html",
+      "html/index/receivables.html",
+      "html/index/repayment.html",
+      "html/user/share_code.html",
+      "html/user/data_authentication.html",
+      "html/index/sk_list.html",
+      "html/index/card_list.html",
+      "html/login/reg.html"
+    ],
+    "resources": [
+      "css/style.css"
+    ]
+  },
+  "html/index/banner.html": {
+    "refer": [
+      "index.html"
+    ],
+    "resources": []
+  },
+  "html/hotloan/hotloan.html": {
+    "resources": [
+      "css/style.css",
+      "img/ý.png"
+    ],
+    "refer": [
+      "html/hotloan/hotloan.detail.html"
+    ]
+  },
+  "html/bank_cards/bank_cards.html": {
+    "resources": [
+      "img/bank_3.png",
+      "img/bank_2.png",
+      "img/bank_4.png",
+      "img/bank_9.png",
+      "img/bank_1.png",
+      "js/common.js",
+      "js/mui.min.js",
+      "js/jquery-1.8.0.min.js",
+      "img/bank_10.png",
+      "img/card_black.png",
+      "img/bank_5.png",
+      "img/bank_7.png",
+      "img/bank_8.png",
+      "img/bank_11.png"
+    ],
+    "refer": [
+      "html/bank_cards/bankCard_detail.html",
+      "html/hotloan/hotloan.html",
+      "html/bank_cards/card_reg.html"
+    ]
+  },
+  "html/bank_cards/bankCard_detail.html": {
+    "refer": [
+      "html/index/home.html",
+      "index.html"
+    ],
+    "resources": []
+  },
+  "html/user/my_profitDetail.html": {
+    "resources": [
+      "js/common.js",
+      "js/mui.min.js",
+      "js/jquery-1.8.0.min.js"
+    ],
+    "refer": []
+  },
+  "html/index/channel.html": {
+    "refer": [
+      "html/index/repayment.html",
+      "html/index/aaa.html",
+      "html/index/payment.html"
+    ],
+    "resources": []
+  },
+  "html/index/aaa.html": {
+    "refer": [
+      "html/index/repayment_list.html",
+      "html/index/payment_history.html"
+    ],
+    "resources": []
+  },
+  "html/user/rank.html": {
+    "resources": [
+      "img/diamond.png",
+      "img/platinum.png",
+      "img/agent.png",
+      "img/icon-wx.png",
+      "fonts/impact.ttf",
+      "img/icon-zfb.png",
+      "fonts/HYZheZhiTiJ.ttf"
+    ],
+    "refer": []
+  },
+  "html/bank_cards/card_reg.html": {
+    "refer": [
+      "html/login/reg_protocol.html",
+      "html/bank_cards/bankCard_detail.html"
+    ],
+    "resources": [
+      "img/credit_safe.png"
+    ]
+  }
+}

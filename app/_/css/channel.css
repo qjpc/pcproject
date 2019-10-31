@@ -1,0 +1,29 @@
+
+li{
+    padding:15px 15px 8px 15px;
+    margin-top:5px;
+    background-color: #fff;
+}
+
+.channel_detail li .bg{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0 8px;
+    color:#fff;
+    height:80px;
+    background: -webkit-linear-gradient(left, #8f6ad9 ,#7f9dfe);
+    box-shadow:0 5px 8px rgb(204,204,204) !important;
+    border-radius: 5px;
+    font-size:15px;
+}
+.date,.time{
+    text-align: right;
+}
+
+.explain{
+    margin-top:20px;
+    padding:0 8px 31px 8px;
+    font-size:13px;
+    color:rgb(153,153,153);
+}

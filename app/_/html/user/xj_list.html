@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<style type="text/css">
+			/*header {
+				width: 100%;
+				height: 75px !important;
+				background: url(../../img/login.png) no-repeat;
+				background-size: cover;
+				box-shadow: none !important;
+				padding-top: 33px;
+			}
+			
+			.mui-content {
+				padding-top: 75px !important;
+			}
+			*/
+			header a {
+				color: #fff;
+			}
+			
+			/* .mui-title {
+				color: #fff!important;
+			}
+			 */
+			.list li {
+				position: relative;
+				height: 70px;
+				background: #fff;
+				padding: 5px 5px;
+			}
+			
+			.list li .name {
+				font-size: 15px;
+				color: #000;
+				margin-bottom: 5px;
+			}
+			
+			.list li .phone {
+				font-size: 12px;
+			}
+			
+			.list li .right {
+				position: absolute;
+				top:50%;
+				right:0;
+				transform: translateY(-50%);
+				width: calc(100% / 3);
+				font-size: 16px;
+				text-align: center;
+			}
+
+			.list li .left{
+				position: absolute;
+				top:50%;
+				transform: translateY(-50%);
+				width: calc(100% / 3);
+				text-align: center;
+			}
+			
+			.no_info {
+				width: 50%;
+				margin: 30px auto;
+				text-align: center;
+			}
+			
+			.no_info img {
+				width: 100%;
+			}
+			
+			.more {
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				margin-bottom: 50px;
+			}
+			.wrap{
+				position: fixed;
+				left:0;
+				padding:0 5px;
+				width:100%;
+				font-size: 16px;
+				background: #fff;
+				z-index:9999;
+			}
+			
+			.wrap span{
+				display: inline-block;
+				width: calc(100% / 3);
+				height:50px;
+				line-height: 50px;
+				text-align: center;
+			}
+			.mui-table-view-cell:after{
+				left:20px;
+				right:20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<div class="statusbarHeight">&nbsp;</div>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title"></h1>
+		</header>
+		
+		<div class="mui-content">
+			<ul class="list">
+				<div class="wrap" style="display: none">
+					<span class="left">会员名称</span><span class="right">注册时间</span>
+					<div class="clear"></div>
+				</div>
+			</ul>
+			<p class="more" style="display: none;">点击加载更多</p>
+			<div class="no_info" style="display: none;">
+				<img src="../../img/no_creditbill_icon.png" />
+				<p>没有相关数据</p>
+			</div>
+		</div>
+		<script src="../../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.plusReady(function() {
+				mui.init({
+					hardwareAccelerated: true,
+				});
+				var wrap_height = $(".wrap").height()
+				var StatusbarHeight = plus.navigator.getStatusbarHeight();
+				var headerH = StatusbarHeight+44;
+				$(".statusbarHeight").css("height",StatusbarHeight);
+				$("header").css("height",headerH);
+				$(".wrap").css("top",headerH)
+				$(".mui-content").css("padding-top",headerH + wrap_height);
+				var tokens = getToken();
+				getToken();
+				var self = plus.webview.currentWebview();
+				if(self.title == 1) {
+					$(".mui-title").html("直推团队");
+				} else if(self.title == 2) {
+					$(".mui-title").html("拓展团队");
+				}
+				plus.nativeUI.showWaiting("安全检测中，请等待");
+				var page = 1;
+				$.ajax({
+					type: "post",
+					url: site_app + "/api/my/user_lower?page=" + page,
+					data: {
+						token: tokens,
+						type: self.title
+					},
+					dataType: "json",
+					success: function(e) {
+						console.log(e);
+						if(e.error == 0) {
+							var data = e.data.data;
+							if(data == false) {
+								$(".no_info").show();
+								$(".list,.more").hide();
+								$(".wrap").hide();
+							} else {
+								$(".no_info").hide();
+								$(".list,.more").show();
+								$(".wrap").show();
+								for(var i = 0; i < data.length; i++) {
+									var html = '<li class="mui-table-view-cell">' +
+										'<div class = "left" >' +
+										'<p class = "name" >' + data[i].user_name + '</p> ' +
+										'<p class = "phone" > ' + data[i].user_phone + ' </p>' +
+										'</div> ' +
+										'<div class = "right" >' + data[i].user_time + '</div> ' +
+										'<div class = "clear" >' +
+										'</div> ' +
+										'</li>';
+									$(".list").append(html);
+								}
+							}
+						}
+					}
+				});
+				$(".more").click(function() {
+					page++;
+					$.ajax({
+						type: "post",
+						url: site_app + "/api/my/user_lower?page=" + page,
+						data: {
+							token: tokens,
+							type: self.title
+						},
+						dataType: "json",
+						success: function(e) {
+							if(e.error == 0) {
+								var data = e.data.data;
+								if(data == false) {
+									$(".more").html("没有更多数据了~");
+								} else {
+									$(".more").html("点击加载更多");
+									for(var i = 0; i < data.length; i++) {
+										var html = '<li class="mui-table-view-cell">' +
+											'<div class = "left" >' +
+											'<p class = "name" >' + data[i].user_name + '</p> ' +
+											'<p class = "phone" >  ' + data[i].user_phone + ' </p>' +
+											'</div> ' +
+											'<div class = "right" >' + data[i].user_time + '</div> ' +
+											'<div class = "clear" >' +
+											'</div> ' +
+											'</li>';
+										$(".list").append(html);
+									}
+								}
+							}
+
+						}
+					});
+				})
+				$("body").ajaxStop(function() {
+					plus.nativeUI.closeWaiting();
+				});
+			})
+		</script>
+	</body>
+
+</html>

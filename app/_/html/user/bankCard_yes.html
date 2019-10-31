@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/rz_step.css" />
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_812297_gn0v2ir2aqs.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
+		<style type="text/css">
+			.mui-table-view-cell:last-child:after {
+				height: 1px !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<div class="statusbarHeight">&nbsp;</div>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">结算卡认证</h1>
+		</header>
+		<div class="mui-content bankCard_rz">
+			<div class="yes_rz" style="padding-bottom: 30px;">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<label>姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+						<span class="user_name">姓名</span>
+					</li>
+				</ul>
+				<ul class="mui-table-view" style="margin-top: 15px;">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>卡&nbsp;&nbsp;&nbsp;&nbsp;号：</label>
+							<input type="text" class="kahao" readonly="readonly">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>银&nbsp;&nbsp;&nbsp;&nbsp;行：</label>
+							<input type="text" class="yinhang" readonly="readonly">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>地&nbsp;&nbsp;&nbsp;&nbsp;址：</label>
+							<input type="text" class="dizhi" readonly="readonly">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>支&nbsp;&nbsp;&nbsp;&nbsp;行：</label>
+							<input type="text" class="zhihang" readonly="readonly">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label>预留手机：</label>
+							<input type="text" class="mui-input-clear phone" placeholder="请输入预留手机号">
+						</div>
+					</li>
+					<div class="img_list" style="padding-top: 20px;">
+						<div class="img_container">
+							<img src="../../img/ic_bank_z.png" id="positive_s" />
+							<p>上传银行卡正面</p>
+						</div>
+						<div class="img_container">
+							<img src="../../img/ic_bank_f.png" id="opposite_s" />
+							<p>上传银行卡反面</p>
+						</div>
+					</div>
+				</ul>
+				<button type="button" class="mui-btn mui-btn-blue change">变更结算卡信息</button>
+			</div>
+		</div>
+		<script src="../../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.plusReady(function() {
+				mui.init({
+					hardwareAccelerated: true,
+					beforeback: function() {
+						//获得父页面的webview
+						var list = plus.webview.currentWebview().opener();
+						//触发父页面的自定义事件(refresh),从而进行刷新
+						mui.fire(list, 'data_authentiction');
+						//返回 true,继续页面关闭逻辑
+						return true;
+					}
+				});
+				var StatusbarHeight = plus.navigator.getStatusbarHeight();
+				var headerH = StatusbarHeight + 44;
+				$(".statusbarHeight").css("height", StatusbarHeight);
+				$("header").css("height", headerH);
+				$(".rz_step").css("top", headerH);
+				var headerHs = headerH + 60;
+				$(".mui-content").css("padding-top", headerHs);
+
+				window.addEventListener('bankCard_rz', function(e) { //执行刷新
+					location.reload();
+				});
+				window.addEventListener('activation', function(e) { //执行刷新
+					location.reload();
+				});
+				var tokens = getToken();
+				getToken();
+				//plus.nativeUI.showWaiting("安全检测中，请等待");
+				$(".mui-content").css("padding-top", headerH)
+				$(".yes_rz").show();
+				$(".mui-title").html("结算卡信息");
+				/*获取储蓄卡详情*/
+				var card_id;
+				$.ajax({
+					url: site_app + "/api/my/card_info",
+					type: "post",
+					data: {
+						token: tokens,
+						type: "2"
+					},
+					dataType: "json",
+					async: false,
+					success: function(e) {
+						if(e.error == 0) {
+							card_id = e.data.card_id;
+							$(".kahao").val(e.data.card_no);
+							$(".yinhang").val(e.data.list_name);
+							$(".dizhi").val(e.data.card_province + "-" + e.data.card_city + "-" + e.data.card_district);
+							$(".zhihang").val(e.data.card_branch);
+							$("#positive_s").attr("src", e.data.card_img1);
+							$("#opposite_s").attr("src", e.data.card_img2);
+						}
+					}
+				})
+				/*获取用户信息*/
+				$.ajax({
+					url: site_app + "/api/my/info",
+					type: "post",
+					data: {
+						token: tokens
+					},
+					dataType: "json",
+					success: function(e) {
+						if(e.error == 0) {
+							if(e.data.user_isactivation == 0) {
+								$(".user_name").html(e.data.user_name);
+								$(".phone").val(e.data.user_phone);
+							} else {
+								mui.alert('请激活账户', '提示', '', function() {
+									mui.openWindow({
+										url: "../user/activation.html",
+										id: "activation",
+										show: {
+											autoShow: true, //页面loaded事件发生后自动显示，默认为true
+										},
+										waiting: {
+											//autoShow: true, //自动显示等待框，默认为true
+											//title: '安全检测中，请等待', //等待对话框上显示的提示内容
+										}
+									})
+								}, 'div');
+							}
+
+						}
+					}
+				});
+				$(".change").click(function() {
+					mui.openWindow({
+						url: "change_bankCard.html",
+						id: "change_bankCard",
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						},
+						extras: {
+							card_id: card_id
+						},
+						waiting: {
+							//autoShow: true, //自动显示等待框，默认为true
+							//title: '安全检测中，请等待', //等待对话框上显示的提示内容
+						}
+					})
+				})
+
+				$("body").ajaxStop(function() {
+					plus.nativeUI.closeWaiting();
+				});
+				 
+			});
+		</script>
+	</body>
+
+</html>

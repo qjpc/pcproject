@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bank_cards.css" />
+        <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_812297_gn0v2ir2aqs.css" />
+        <style>
+        #back{
+            position: absolute;
+            right:20px;
+            bottom:12px
+        }
+        </style>
+    </head>
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <div class="statusbarHeight">&nbsp;</div>
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">全部信用卡</h1>
+            <img id="back" src="../../img/delete.png" alt="logo" width="14px" height="14px"/>
+        </header> 
+        <div class="mui-content">
+            <!-- 轮播图 -->
+            <div class="mui-slider">                     
+                <div class="mui-slider-group mui-slider-loop">
+                    <!--支持循环，需要重复图片节点-->
+                    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../../img/bankCards_banner4.png"  /></a></div>
+                    <div class="mui-slider-item"><a href="#"><img src="../../img/bankCards_banner1.png" /></a></div>
+                    <div class="mui-slider-item"><a href="#"><img src="../../img/bankCards_banner4.png" /></a></div>
+                    <!--支持循环，需要重复图片节点-->
+                    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../../img/bankCards_banner1.png"  /></a></div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <h1 class="bank">热门银行</h1>
+                <ul class="grid_list">
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    
+
+        <script src="../../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../js/mui.min.js"></script>
+        <script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            var tokens = localStorage.getItem("token");
+            var tokensss = tokens;
+            mui.plusReady(function(){
+                mui.init({
+                    hardwareAccelerated: true,
+                })
+
+                var StatusbarHeight = plus.navigator.getStatusbarHeight();  //获取系统状态栏的高度
+                console.log(StatusbarHeight)
+                var headerH = StatusbarHeight+44;
+                $(".statusbarHeight").css("height",StatusbarHeight);
+                $("header").css("height",headerH);
+                $(".mui-content").css("padding-top",headerH);
+
+                // 图片轮播
+                var gallery = mui('.mui-slider');
+                gallery.slider();
+                mui(".mui-slider").slider({
+                    interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
+                });
+
+                $("#back").click(function(){
+                    mui.back(mui.openWindow('index.html'))
+                })
+
+                $.ajax({
+                    url:site_app + "/api/bank_apply/banklist",
+                    type:"post",
+                    dataType:"json",
+                    success:function(e){
+                        if(e.error == 0){
+                            var result = e.data;
+                            console.log(result);
+                            var lis = "";
+                            for(var i = 0;i<result.length;i++){
+                                lis += '<li id = "'+result[i].lender_id+'" title = "'+result[i].lender_url+'" >';
+                                lis += '<div class="wrap">'
+                                lis += '<img src="'+result[i].lender_img+'">';
+                                lis += '<div class="text">';
+                                lis += '<h3>'+result[i].lender_title+'</h3>';
+                                lis += '<span class="lable">'+result[i].lender_tab+'</span>';
+                                lis +='<div class="desc">';
+                                lis += '<p>'+result[i].lender_describe+'</p>';
+                                lis +='</div>'
+                                lis += '</div>';
+                                lis += '</div>'
+                                lis += '</li>'
+                            }
+                            $(".grid_list").html(lis)
+                        }
+
+                        $(".grid_list li").click(function(){
+                            var id = $(this).attr("id");
+                            var title =  $(this).attr("title");
+                            console.log(id)
+                            mui.openWindow({
+                                url:"./card_reg.html",
+                                id:"card_reg",
+                                show: {
+                                    autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                                },
+                                extras:{
+                                    ids: id,
+                                    title:title
+                                },
+                                waiting: {
+                                    autoShow: true, //自动显示等待框，默认为true
+                                    title: '', //等待对话框上显示的提示内容
+                                }
+                            })
+
+
+
+
+                            // mui.openWindow({
+                            //     url:"./bankCard_detail.html",
+                            //     id:"bankCard_detail",
+                            //     extras:{
+                            //         card_url:title
+                            //     },
+                            //     show: {
+                            //         autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                            //     },
+                            //     waiting: {
+                            //         autoShow: true, //自动显示等待框，默认为true
+                            //         title: '', //等待对话框上显示的提示内容
+                            //     }
+                            // })
+                        })
+                    }
+                })
+                
+                
+
+            })
+        </script>
+    </body>
+</html>

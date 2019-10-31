@@ -1,0 +1,442 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/rank.css" />
+        <style>
+            .mui-slider-group{
+                margin-left: 6%;
+            }
+            .mui-slider-item {
+                width:94% !important;
+                margin:0 1%;
+                position: relative;
+                color:#fff;
+            }
+            .mui-slider-item img{
+                width:100%;
+            }
+            .mui-slider-item .rate{
+                position: absolute;
+                top:10%;
+                left:5%;
+				font-size: 20px;
+				font-family:  myFirstFont;
+				
+			}
+			
+			@font-face {
+				font-family: myFirstFont;
+				src: url('../../fonts/HYZheZhiTiJ.ttf');
+			}
+
+			@font-face {
+				font-family: mySecondFont;
+				src: url('../../fonts/impact.ttf');
+			}
+
+            .mui-slider-item .money{
+                position: absolute;
+                top:35%;
+                left:5%;
+                font-family:mySecondFont;
+                font-size:45px;
+            }
+            .mui-slider-item .wrap{
+                position: absolute;
+                bottom:10%;
+                left:5%;
+                
+            }
+            .mui-slider-item .wrap p{
+                font-size: 12px;
+                color:#fff !important;
+            }
+            .aui-total{
+                font-size: 24px;
+                font-weight: normal;
+			}
+			.be_careful{
+				padding:0 15px;
+			}
+			
+            
+        </style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<div class="statusbarHeight">&nbsp;</div>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">会员权益</h1>
+		</header>
+		<div class = "mui-content">
+            <div class="mui-slider">
+                <div class="mui-slider-group">
+                    
+                </div>
+            </div>
+            <div class="dot">
+               
+			</div>
+			<div class="long_hight">
+				您已是最高等级，无需升级！
+			</div>
+			<div class="be_careful">
+				<h3>*提示</h3>
+				<div>
+					1.当累计还款额度达到500万时，黄金vip可自动升级为铂金vip，可申请退还升级黄金vip费用；<br/>
+					2.当累计还款额度达到4000万时，铂金vip可自动升级为钻石vip，可申请退还升级铂金vip费用；<br/>
+					3.当累计还款额度达到1亿时，可申请退还升级钻石vip费用；
+				</div>
+			</div>
+			<div class="aui-flex-member-list hidden">
+				<!-- <h2>优享会员</h2>
+				<ul class="aui-cho-box" id="itme">
+
+				</ul> -->
+				
+
+				<div style="display:none">
+					<input name="" type="text" value="1" class="auiSks" />
+				</div>
+				<p class="aui-total b-line">
+                    ￥:<span></span>元
+
+				</p>
+				<div class="chi">
+
+				</div>
+				
+			</div>
+
+			<footer class="aui-tabBar aui-tabBar-fixed hidden">
+				<button class="aui-tabBar-btn" disabled>立即升级</button>
+			</footer>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery-1.8.0.min.js"></script>
+		<script src="../../js/common.js"></script>
+		<script type="text/javascript">
+			mui.plusReady(function() {
+				mui.init({
+					hardwareAccelerated: true,
+					beforeback: function() {
+						//获得父页面的webview   上一个打开的页面
+						var list = plus.webview.currentWebview().opener();      
+						//触发父页面的自定义事件(refresh),从而进行刷新
+						console.log(list)
+						mui.fire(list, 'upload_head');
+						
+						//返回true,继续页面关闭逻辑
+						return true;
+					}
+				});
+                var current_rate_money;
+                var current_index = 0 ;
+				var StatusbarHeight = plus.navigator.getStatusbarHeight();
+				var headerH = StatusbarHeight + 44;
+				$(".statusbarHeight").css("height", StatusbarHeight);
+				$("header").css("height", headerH);
+				$(".mui-content").css("padding-top", headerH);
+
+				$(".aui-tabBar-btn").css("background","rgb(103,103,103)")
+				window.addEventListener('member', function(e) { //执行刷新
+					location.reload();
+				});
+				window.addEventListener('activation', function(e) { //执行刷新
+					location.reload();
+				});
+				plus.nativeUI.showWaiting("安全检测中，请等待");      //显示原生等待框
+				var token = getToken();
+
+				getToken();
+				$.ajax({
+					type: 'post',
+					url: site_app + '/api/my/info',
+					data: {
+						'token': token
+					},
+					cache: false,
+					dataType: 'json',
+					success: function(data) {
+						console.log(data)
+						if(data.error == 1){
+							mui.alert(data.msg, '提示', '', '', 'div')
+						}else{
+							current_rate_money = data.data.type_fee;
+							if(data.error == 0) {
+								if(data.data.user_isactivation == 0) {
+									onload(data.data.user_type_id,data.data.type_fee);       
+									$.ajax({
+										type: 'post',
+										url: site_app + '/api/repayment/membergetchannel',
+										data: {
+											'token': token
+										},
+										cache: false,
+										dataType: 'json',
+										success: function(data) {
+											if(data.error == 0) {
+												var tex = '';
+												for(i = 0; i < data.data.length; i++) {
+													tex += '<div class="aui-flex b-line" style="padding:15px 0">';
+													tex += '<div class="aui-flex-box aui-flex-box-clear">';
+													if(data.data[i].channel_type == "wxpay"){
+														tex += '<h4><img src="../../img/icon-wx.png" width="25px" height="25px" style="margin-right:10px;"/><span>'+ data.data[i].channel_name +'</span></h4>'
+													}else{
+														tex += '<h4><img src="../../img/icon-zfb.png" width="25px" height="25px" style="margin-right:10px;"/><span>'+ data.data[i].channel_name +'</span></h4>'
+													}
+													// tex += '<p>亿万用户的选择，更快更安全</p>';
+													tex += '</div>';
+													tex += '<div class="aui-payment-method">';
+													tex += '<label class="cell-right">';
+													if(i < 1) {
+														tex += '<input type="radio" name="radio" value="' + data.data[i].channel_id + '" checked="checked">';
+													} else {
+														tex += '<input type="radio" name="radio" value="' + data.data[i].channel_id + '">';
+													}
+													tex += '<i class="cell-radio-icon"></i>';
+													tex += '</label>';
+													tex += '</div>';
+													tex += '</div>';
+												}
+												$('.chi').html(tex);
+											} else {
+												mui.alert(data.msg, '提示', '', '', 'div');
+											}
+										}
+									});
+								} else {
+									mui.alert('请激活账户', '提示', '', function() {
+										mui.openWindow({
+											url: "../user/activation.html",
+											id: "activation",
+											show: {
+												autoShow: true, //页面loaded事件发生后自动显示，默认为true
+											},
+											waiting: {
+												autoShow: true, //自动显示等待框，默认为true
+												title: '安全检测中，请等待', //等待对话框上显示的提示内容
+											}
+										})
+									}, 'div');
+								}
+
+							} else {
+								mui.alert(data.msg, '提示', '', '', 'div');
+							}
+						}
+					}
+				})
+
+				function onload(type_id,money) {
+					console.log(money)
+					$.ajax({
+						type: 'post',
+						url: site_app + '/api/my/Membership',
+						data: {
+							'token': token
+						},
+						cache: false,
+						dataType: 'json',
+						success: function(data) {
+							console.log(data);
+							if(data.error == 0) {
+								var content = '';
+								var flag=true;
+								var first=99;
+								//								var arrss = [];
+								for(i = 0; i < data.data.sk.length; i++) {
+									$(".hidden").show();
+									var maxData = data.data.sk[0].type_id;       //最开始的会员等级
+									if(data.data.sk[i].type_id > maxData) {
+										maxData = data.data.sk[i].type_id; // 最高的会员等级
+									};
+									if(maxData == type_id) {                 
+									
+										$(".hidden").hide();             //会员支付价格隐藏
+										$(".dot").hide();
+										$(".long_hight").show();       //您已是最高等级无需升级字样显示
+										$(".be_careful").show();
+										$(".mui-slider-group").css("margin-left","4%");
+										
+	
+									} else {
+										$(".dot").show();
+										$(".hidden").show();
+										$(".long_hight").hide();
+										$(".mui-slider-group").css("margin-left","6%");
+										
+									
+									}
+									if(data.data.sk[i].type_id>type_id || maxData == type_id){    
+										if(flag){
+											first=i;
+											flag=false;
+										}
+
+										var $wrap = $("<span></span>");
+										$(".dot").append($wrap)
+										var show_fee=data.data.sk[i].type_fee-money    //升级会员的价格
+										var sk_num = (data.data.sk[i].rate_rate * 100);   //收款费率
+										sk_num = Number(sk_num).toFixed(2);
+										var hk_num = (data.data.hk[i].rate_rate * 100);   //还款费率
+										hk_num = Number(hk_num).toFixed(2);
+										if(data.data.sk[i].type_id>4){
+											show_fee = 0
+										}
+                                        content +=  "<div class = 'mui-slider-item' title = '"+data.data.sk[i].type_id+"'>";
+										if(data.data.sk[i].type_id == 1){
+                                            content +=  "<img src='../../img/ordinary.png' />"
+                                        };
+                                        if(data.data.sk[i].type_id == 2){
+                                            content +=  "<img src='../../img/gold.png' />"
+                                        };
+                                        if(data.data.sk[i].type_id == 3){
+                                            content +=  "<img src='../../img/platinum.png'/>"
+                                        };
+                                        if(data.data.sk[i].type_id == 4){
+                                            content +=  "<img src='../../img/diamond.png'/>"
+                                        };
+                                        if(data.data.sk[i].type_id == 5){
+                                            content +=  "<img src='../../img/agent.png'/>"
+                                        };
+                                        content += "<div class = 'rate'>"+ data.data.sk[i].type_name +"</div>" ;
+										if(maxData == type_id){
+											content += "<div class = 'money member'>" + "当前等级" + "</div>";
+											$(".aui-total span").text(0);
+											
+											$(".money").css("font-size","35px");
+										}else{
+											content += "<div class = 'money'>" + show_fee + "</div>";
+										}
+                                        content += "<div class = 'wrap'>";
+                                        content += "<p>收款：最低费率:" + sk_num + '%  、结算费用:' + data.data.sk[i].rate_close_rate + "/笔</p>";
+                                        content += "<p>还款：最低费率:" + hk_num + '%  、结算费用:' + data.data.hk[i].rate_close_rate + "/笔</p>";
+                                        content += "</div>";
+                                        content += "</div>";
+									}
+                                    $(".mui-slider-group").html(content);
+									$(".member").css("font-size","35px")
+                                    var gallery = mui('.mui-slider');
+                                    gallery.slider({
+                                        interval:0//自动轮播周期，若为0则不自动播放，默认为0；
+                                    });
+								}
+
+                                console.log(first)
+								if(first === 99){
+									$(".aui-total span").text(0)
+								}else{
+									$(".aui-total span").text(data.data.sk[first].type_fee-money);   //需要支付的总价
+								}
+
+							} else {
+								mui.alert(data.msg, '提示', '', '', 'div');
+							}
+						}
+					})
+				};
+
+				var channel = null;
+				var channels = [];
+				plus.payment.getChannels(function(result) {
+					channels=result;
+                    console.log(channels)
+				}, function(e) {
+
+					mui.alert('获取支付通道失败', '提示', '', '', 'div');
+					return false;
+				});
+			
+				//提交订单
+				$(".aui-tabBar-btn").click(function() {
+
+					var money = $(".aui-total span").text();
+					var chennel_id = $('input[type=radio]:checked').val();
+					var title = $(".mui-slider-item").eq(current_index).attr("title");
+					$.ajax({
+						type: 'post',
+						url: site_app + '/api/payrecords/memberupgrade',
+						data: {
+							'token': token,
+							'price': money,
+							'chennel_id': chennel_id,
+							'type_id': title
+						},
+						cache: false,
+						dataType: 'json',
+						success: function(data) {
+							if(data.error == 0) {
+								if(data.isurl == 0) {
+									var payParams = data.payParams;
+									var channel_type = data.channel_type;
+									for (var  i  in  channels)  {
+										if (channels[i].id  == channel_type)  {
+											channel = channels[i];
+										}
+									}
+									plus.payment.request(channel, payParams, function(result) {
+										mui.alert("支付成功！",'提示','', function() {
+											location.reload();
+										},'div');
+									}, function(error) {
+										mui.toast("支付失败" )
+									});
+								} else if(data.isurl == 1) {
+									mui.openWindow({
+										url: "member_iframe.html",
+										id: "member_iframe",
+										show: {
+											autoShow: true, //页面loaded事件发生后自动显示，默认为true
+										},
+										extras: {
+											urls: data.data.url,
+										},
+										waiting: {
+											autoShow: true, //自动显示等待框，默认为true
+											title: '安全检测中，请等待', //等待对话框上显示的提示内容
+										}
+									})
+								}
+							} else {
+								mui.alert(data.msg, '提示', '', '', 'div');
+							}
+						}
+					})
+				});
+
+                document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+					current_index = event.detail.slideNumber       //获取当前轮播的索引
+					var current_money = $(".mui-slider-item").eq(current_index).children(".money").text();
+					if(event.detail.slideNumber<1 ){
+						$(".aui-tabBar-btn").attr("disabled",true);
+						$(".aui-tabBar-btn").css("background","rgb(103,103,103)")
+						$(".aui-total span").text(0);
+					}else if($(".mui-slider-item").eq(current_index ).attr("title") > 4){
+                        $(".aui-total span").text(0);
+                    }else{
+                        $(".aui-total span").text(current_money);
+						$(".aui-tabBar-btn").removeAttr("disabled");
+						$(".aui-tabBar-btn").css("background","#5973fe");
+                    }
+
+                    $(".dot span").css("backgroundColor","rgb(221,221,221)");
+                    $(".dot span").eq(current_index).css("backgroundColor","rgb(142,142,142)")
+				})
+
+				$("body").ajaxStop(function() {
+					plus.nativeUI.closeWaiting();
+				});
+			});
+		</script>
+	</body>
+
+</html>

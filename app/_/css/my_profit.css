@@ -1,0 +1,117 @@
+html,body{
+    width: 100%;
+    background-image: url("../img/profit_bgc.png");
+    background-size: cover;
+    padding-top:10px;
+}
+.mui-content{
+    padding:0 5px;
+    position: relative;
+    background-color: transparent !important;
+    width: 100%;
+}
+.mui-icon{
+    color:#fff
+}
+.mui-content .profit_logo{
+    position: absolute;
+    top:21px;
+    left: 50%;
+    margin-left: -71px;
+}
+.mui-content .profit_chart{
+    position: absolute;
+    left: 50%;
+    top:95px;
+    margin-left:-100px;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color:#fff;
+    background:#7789e8;
+    border-radius: 5px;
+    box-shadow: 0 2px #98b0ff
+}
+
+.mui-content .wrap_detail{
+    margin-top:97px;
+    padding:22px 10px 0 10px;
+    width:100%;
+    background: rgba(255,255,255,.2);
+    border-radius: 5px;
+    text-align: center;
+}
+.mui-content .income{
+    position: relative;
+    margin-top:30px;
+    padding:22px 10px 20px 10px;
+}
+
+.mui-content .income_analysic{
+    position: absolute;
+    left: 50%;
+    top:-20px;
+    margin-left: -73px;
+    width: 146px;
+    height: 30px;
+    line-height: 30px;  
+    text-align: center;
+    color:#fff;
+    background: #7789e8;
+    border-radius: 5px;
+    box-shadow: 0 2px #98b0ff
+}
+
+.mui-content .wrap_detail table {
+    border:1px solid #fff;
+    background: #fff;
+    border-collapse: collapse;
+    font-size:12px;
+    
+}
+.mui-content .wrap_detail table thead{
+    color:#fff;
+    background: rgb(255,172,27)
+}
+.mui-content .wrap_detail table tr{
+    height:40px
+}
+
+
+
+.mui-content .wrap_detail .text{
+    font-size:10px;
+    color:rgb(17,17,17)
+}
+.mui-content .need_attention{
+    margin:20px 10px;
+}
+.mui-content .need_attention h1{
+    font-size:14px;
+    color:#fff
+}
+.mui-content .need_attention h1 span{
+    font-size:12px;
+}
+.mui-content .need_attention .text{
+    font-size:13px;
+    color:#fff;
+}
+.mui-content .wrap_detail table .user_level{
+    background: rgb(238,238,238)
+}
+.mui-content .wrap_detail table .td_bgc{
+    color:#fff;
+    background: rgb(255,172,27);
+    font-size: 13px;
+}
+.mui-content .wrap_detail .title{
+    font-size:14px;
+}
+.mui-content .income table{
+    font-size: 11px;
+}
+.foot_logo{
+    margin-top:20px
+}

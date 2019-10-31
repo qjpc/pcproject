@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/share.css" />
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_812297_gn0v2ir2aqs.css" />
+    </head>
+    
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <div class="statusbarHeight">&nbsp;</div>
+        <h1 class="mui-title">分享</h1>
+    </header> 
+    <div class="mui-content">
+        <div class="mui-banner">
+            <img src="../../img/sharebanner@2x.png" alt="" width=100%>
+        </div>      <!--轮播图结束-->
+        <div class="mui-grid">
+            <div class="share-content">
+                <ul class="wrap">
+
+                </ul>
+            </div>
+            <div class="reward">
+                <img src="../../img/reward@2x.png" alt="图片加载中" width="30%" height="30%">
+                <div>邀请好友使用，邀请越多奖励越多</div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        var tokens = localStorage.getItem("token");
+        console.log(tokens)
+        var tokensss = tokens;
+        mui.plusReady(function() {
+            mui.init({
+                hardwareAccelerated: true,
+                beforeback: function() {
+                        //获得父页面的webview
+                        var list = plus.webview.currentWebview().opener();
+                        //触发父页面的自定义事件(refresh),从而进行刷新
+                        mui.fire(list, 'user');
+                        //返回true,继续页面关闭逻辑
+                        return true;
+                    },
+			});
+            
+            window.addEventListener('reload', function(e) { //执行刷新
+                tokens = localStorage.getItem("token");
+                $(".wrap").html("")
+                newactivity();
+                checkactivity();
+            });
+
+            window.addEventListener('login', function(e) { //执行刷新
+                tokens = localStorage.getItem("token");
+                $(".wrap").html("")
+                newactivity();
+                checkactivity();
+			});
+            
+            var StatusbarHeight = plus.navigator.getStatusbarHeight();  //获取系统状态栏的高度
+            console.log(StatusbarHeight)
+            var headerH = StatusbarHeight+44;
+            $(".statusbarHeight").css("height",StatusbarHeight);
+            $("header").css("height",headerH);
+            $(".mui-content").css("padding-top",headerH);
+
+            $(".bk").on("click",".register",function(){
+                mui.openWindow({
+                    url: "../login/reg.html",
+                    id: "reg",
+                    show: {
+                        autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                    },
+                    waiting: {
+                        autoShow: true, //自动显示等待框，默认为true
+                        title: '', //等待对话框上显示的提示内容
+                    }
+                })
+            })
+
+            function newactivity(){
+                $.ajax({
+                    url: site_app + "/api/open/newactivity",
+                    type:"post",
+                    dataType:"json",
+                    success:function(e){
+                        var data = e.data;
+                        console.log(data)
+                        if(e.error == 0){
+                            for(var i = 0; i<data.length; i++){
+                                var content = "<li class = 'bk'>"+
+                                                "<div class = 'left'>" + 
+                                                    "<div class = 'award'>"+
+                                                        "<span>" + data[i].name + "</span>" + 
+                                                        "<span class= 'money'> + "+ data[i].money +"元"+"</span>"+
+                                                    "</div>" +
+                                                    "<div class = 'text'>" + data[i].main + "</div>" + 
+                                                "</div>" +
+                                                "<button class = 'tapcard  act_"+i+"' title = '"+ data[i].url+"'>" + data[i].button +
+                                                "</button>" +
+                                        "</li>"
+                                $(".wrap").append(content);
+                            }
+                        }
+                    }
+                })
+            }
+            
+            function checkactivity(){
+                $.ajax({
+                    url:site_app + "/api/my/checkactivity",
+                    type:"post",
+                    data:{
+                        token:tokens
+                    },
+                    dataType:"json",
+                    success:function(e){
+                        var datas = e.data;
+                        for(var k in datas){
+                            if(datas[k] == 1){
+                                $("."+k).attr("disabled",true);
+                                $("."+k).addClass("prohibit");
+                                $("."+k).text("已完成")
+                            }
+                        }
+                    }
+                })
+            }
+
+            newactivity();
+            checkactivity();
+
+            
+
+            $(".wrap").on("click",".tapcard",function(){
+                var jump_url = $(this).attr("title");
+                jump(jump_url);
+            })
+
+
+            function jump(new_url){
+                if(new_url == "../login/reg.html"){
+                    mui.openWindow({
+                        url: "../login/reg.html",
+                        id: "reg",
+                        show: {
+                            autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                        },
+                        waiting: {
+                            autoShow: true, //自动显示等待框，默认为true
+                            title: '', //等待对话框上显示的提示内容
+                        }
+                    })
+                }else if(!tokens) {
+                    mui.alert("请先登录", "提示", "", function() {
+                        mui.openWindow({
+                            url: "../login/login.html",
+                            id: "login",
+                            show: {
+                                autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                            },
+                            waiting: {
+                                autoShow: true, //自动显示等待框，默认为true
+                                title: '', //等待对话框上显示的提示内容
+                            }
+                        })
+                    }, "div")
+                } else {
+                    mui.openWindow({
+                        url: new_url,
+                        show: {
+                            autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                        },
+                        extras: {
+							title: "1"
+						},
+                        waiting: {
+                            autoShow: true, //自动显示等待框，默认为true
+                            title: '', //等待对话框上显示的提示内容
+                        }
+                    })
+                }
+            }
+                
+            
+            $("body").ajaxStop(function() {
+                plus.nativeUI.closeWaiting();
+               
+            });
+        });
+
+        
+
+    </script>
+</body>
+</html>

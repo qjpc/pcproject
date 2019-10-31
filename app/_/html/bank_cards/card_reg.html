@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/card_reg.css" />
+        <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_812297_gn0v2ir2aqs.css" />
+        <style>
+        
+        .apply{
+            margin:0 25px;
+        }
+        .mui-input-group .mui-input-row p{
+            height: 40px;
+            line-height: 40px;
+        }
+        .mui-input-group .mui-input-row .title{
+            color:rgb(51,51,51);
+            font-size: 17px;
+        }
+        .mui-input-group .mui-input-row .info{
+            color:rgb(153,153,153);
+            font-size: 14px;
+        }
+        img{
+            margin-right: 3px;
+        }
+        .tips{
+            margin-top:15px;
+            color:rgb(153,153,153);
+            font-size:13px;
+        }
+        .tips div{
+            margin-bottom:2px;
+        }
+        .tips div span{
+            color:#5973fe;
+        }
+        </style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<div class="statusbarHeight">&nbsp;</div>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">确认信息</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-input-group apply">
+                <div class="mui-input-row">
+                    <p class="title">填写信用卡申请人</p>
+                </div>
+                <div class="mui-input-row">
+                    <p class ="info">请填写申请人信息(必须与信用卡申请信息一致)</p>
+                </div>
+            </div>
+			<form class="mui-input-group reg_form" id="form-reg">
+				<div class="mui-input-row phone">
+					<img src="../../img/credit_name.png" />
+					<input type="text" id="name" name="name" class="mui-input-clear"  placeholder="请输入您的姓名">
+                </div>
+                <div class="mui-input-row">
+                    <img src="../../img/credit_id.png" />
+                    <input type="text" id="card" class="mui-input-clear" name="card" oninput="input_(this.value)"  maxlength="18" placeholder="请输入身份证号码">
+                </div>
+				<div class="mui-input-row tel_phone">
+					<img src="../../img/credit_phone.png" />
+					<input type="text" id="phone" name="phone" class="mui-input-clear"  oninput="func(this.value)" onblur="func(this.value)" placeholder="请输入您的手机号" style="width: 50%;">
+					<button type="button" class="mui-btn mui-btn-blue hq_code" id="getSms" style="display: none" disabled="disabled">获取验证码</button>
+				</div>
+				<div class="mui-input-row safe" style="display: none">
+					<img src="../../img/credit_safe.png" />
+					<input type="text" id="recommend" name="recommend" class="mui-input-clear" placeholder="请输入验证码">
+				</div>
+
+				<input id="rekeywords" name="rekeywords" type="hidden" value="" />
+				<input id="Longitude" name="Longitude" type="hidden" value="" />
+				<input id="latitude" name="latitude" type="hidden" value="" />
+				<!--<div class="not_collet">
+					收不到验证码？
+				</div>-->
+				<!-- <div class="mui-checkbox protocol">
+					<input name="Checkbox" type="checkbox" checked>
+					<label>我已阅读并同意</label>
+					<span class="reg_xy">《卡灵通用户协议》</span>
+                </div> -->
+                <div class="tips">
+                    <div class="prompt">
+                        温馨提示
+                    </div>
+                    <div class="tip">
+                        <div>1.请确保申请人信息真实并与银行申请填写的信息一致，否则申请成功后，将无法获取相关奖励。</div>
+                        <div>2.请确保申请人未持有本银行信用卡，或在其他平台机构同时申请信用卡，将会影响您的会员信用。</div>
+                        <div>3.在卡灵通申请信用卡不收取任何费用，如有向您索要手续费情况，请及时拨打电话<span>400-111-8108</span>向卡灵通举报。</div>
+                    </div>
+                </div>
+                <button type="button" class="mui-btn mui-btn-blue reg" disabled="disabled">立即申请</button>
+			</form>
+		</div>
+		<script src="../../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/common.js"></script>
+        <script type="text/javascript">
+			var tokens = localStorage.getItem("token");
+			var tel;
+            console.log(tokens)
+			function func(value) {
+				console.log(tel)
+				if(value !== tel){
+					$("#getSms").show();
+					$(".safe").show();
+				}else{
+					$("#getSms").hide();
+					$(".safe").hide();
+				}
+				if(value.length > 11) {
+					$("#phone").val(value.slice(0, 11))
+				} else if(value.length == 11) {
+					$("#getSms").removeAttr('disabled');
+					$("#getSms").css('background-color', '#5973FE');
+				} else if(value.length < 11) {
+					$("#getSms").css('background-color', '#DDDDDD');
+					$("#getSms").attr("disabled", true);
+				}
+			}
+			
+			function input_(value) {
+				if(value.length >= 15 && value.length <= 18) {
+					$(".reg").removeAttr("disabled");
+					$(".reg").css('background-color', '#5973FE');
+				} else if(value.length < 15) {
+					$(".reg").css('background-color', '#DDDDDD');
+					$(".reg").attr("disabled", true);
+				}
+			}
+
+			var wait = 60;
+
+			function get_code_time() {
+				//mui.alert('手机号格式错误','提示','','','div');
+				if(wait == 0) {
+					$("#getSms").removeAttr("disabled"); //移除获取验证码按钮的disabled属性
+					$("#getSms").css('background-color', '#5973FE');
+					$("#getSms").html("获取验证码");
+					wait = 60;
+				} else {
+					$("#getSms").css('background-color', '#DDDDDD');
+					$("#getSms").attr("disabled", true); //设置获取验证码按钮为不可触发
+					$("#getSms").html(wait + "s");
+					wait--;
+					setTimeout("get_code_time()", 1000);
+				}
+			}
+			mui.plusReady(function() {
+				mui.init({
+					hardwareAccelerated: true,
+				});
+				var StatusbarHeight = plus.navigator.getStatusbarHeight();
+				var headerH = StatusbarHeight + 44;
+				$(".statusbarHeight").css("height", StatusbarHeight);
+				$("header").css("height", headerH);
+                $(".mui-content").css("padding-top", headerH);
+                var self = plus.webview.currentWebview();
+                var id = self.ids
+                var card_url = self.title;
+				//获取经纬度
+				plus.geolocation.getCurrentPosition(geoInf, function(e) {
+
+				}, {
+					geocode: true,
+					provider: 'amap'
+				});
+
+				function geoInf(position) {
+					var codns = position.coords; //获取地理坐标信息；
+					var longt = codns.longitude; //获取到当前位置的经度
+					var lat = codns.latitude; //获取到当前位置的纬度；
+					$('#latitude').val('');
+					$('#Longitude').val('');
+					console.log($('#latitude').val());
+					console.log($('#Longitude').val());
+				}
+
+				$.ajax({
+					type:"post",
+					url:site_app + "/api/my/info",
+					data: {
+						token: tokens
+					},
+					dataType: "json",
+					success:function(e){
+						if(e.error == 0){
+							tel = e.data.user_account;
+							if(e.data != ""){
+								$("#name").val(e.data.user_name);
+								$("#card").val(e.data.user_idcard);
+								$("#phone").val(e.data.user_account);
+								$(".reg").removeAttr("disabled");
+								$(".reg").css('background-color', '#5973FE');
+							}
+						}
+					}
+				})
+
+				$("#getSms").click(function() {
+					//mui.alert('手机号格式错误','提示','','','div');
+					var phone = $('#phone').val();
+					if(!isphone(phone)) {
+						mui.alert('手机号格式错误', '提示', '', '', 'div');
+						return false;
+					}
+
+					$.ajax({
+						type: 'get',
+						url: site_app + '/api/Main/getsms',
+						data: {
+							'phone': phone,
+							type: 1
+						},
+						cache: false,
+						dataType: 'json',
+						success: function(data) {
+							console.log(data);
+							if(data.error == 0) {
+								get_code_time();
+							} else {
+								mui.alert(data.msg, '提示', '', '', 'div');
+							}
+						}
+					});
+                })
+                
+				$(".reg").click(function() {
+					var phone = $('#phone').val();
+					var name = $('#name').val();
+					var card = $('#card').val();
+					var recommend = $("#recommend").val();
+					console.log(recommend)
+                    if(name == '') {
+						mui.alert('请输入姓名', '提示', '', '', 'div');
+						return false;
+					}
+
+					if(!isName(name)) {
+						mui.alert('请输入真实姓名', '提示', '', '', 'div');
+						return false;
+					}
+                    if(phone == '') {
+						mui.alert('请输入手机号', '提示', '', '', 'div');
+						return false;
+					}
+					if(!isphone(phone)) {
+						mui.alert('手机号格式错误', '提示', '', '', 'div');
+						return false;
+					}
+					if($(".safe").css('display') == 'block' && recommend == '') {
+						mui.alert('请输入短信码', '提示', '', '', 'div');
+						return false;
+					}
+
+					if(card == '') {
+						mui.alert('请输入身份证号', '提示', '', '', 'div');
+						return false;
+					}
+
+					if(!isCardNo(card)) {
+						mui.alert('输入的身份证号有误请重新输入', '提示', '', '', 'div');
+						return false;
+					}
+                    
+					// $('#rekeywords').val(keywords);
+
+					// if(!$("input[type='checkbox']").is(':checked')) {
+					// 	mui.alert('请阅读并同意注册卡灵通用户协议', '提示', '', '', 'div');
+					// 	return false;
+					// }
+
+                    var pdata = $('#form-reg').serialize();
+					$.ajax({
+						type: 'post',
+						url: site_app + '/api/bank_apply/bankdo',
+						data: {
+                            mobile:phone,
+                            idCard:card,
+                            name:name,
+                            token:tokens,
+                            bank:id
+                        },
+						cache: false,
+						dataType: 'json',
+						success: function(e) {
+							if(e.error == 0) {
+								mui.openWindow({
+									url: "./bankCard_detail.html",
+									id: "bankCard_detail",
+									show: {
+										autoShow: true, //页面loaded事件发生后自动显示，默认为true
+									},
+									extras:{
+										card_url:card_url
+									},
+									waiting: {
+										autoShow: true, //自动显示等待框，默认为true
+										title: '', //等待对话框上显示的提示内容
+									}
+								});
+							} else {
+								mui.alert(e.msg, '提示', '', '', 'div');
+							}
+						}
+					});
+
+				})
+
+				$(".reg_xy").click(function() {
+					mui.openWindow({
+						url: "../login/reg_protocol.html",
+						id: "reg_protocol",
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						},
+						waiting: {
+							//autoShow: true, //自动显示等待框，默认为true
+							//title: '安全检测中，请等待', //等待对话框上显示的提示内容
+						}
+					})
+				})
+				plus.nativeUI.closeWaiting();
+				 
+			})
+		</script>
+	</body>
+
+</html>

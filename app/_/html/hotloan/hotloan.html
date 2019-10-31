@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+        <style>
+        .mui-bar{
+            position: relative;
+        }
+        #back{
+            position: absolute;
+            right:20px;
+            bottom:12px
+        }
+        </style>
+    </head>
+    <body>
+        
+        <script src="../../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../js/mui.min.js"></script>
+        <script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            mui.plusReady(function(){
+                var StatusbarHeight = plus.navigator.getStatusbarHeight();
+				var headerH = StatusbarHeight+44;
+				$(".statusbarHeight").css("height",StatusbarHeight);
+				$("header").css("height",headerH);
+                mui.openWindow({
+                
+                    url: "./hotloan.detail.html",
+                    id: "hotloan.detail",
+                    show: {
+                        autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                        aniShow:'none’',//页面显示动画，默认为”slide-in-right“；
+      					duration:'0'//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+                    },
+                    // extras:{
+                    //     card_url:title
+                    // },
+                 
+                    waiting: {
+                        autoShow: false, //自动显示等待框，默认为true
+                        title: '', //等待对话框上显示的提示内容
+                    }
+                })
+                
+               
+                
+                window.addEventListener('back', function(e) { //执行刷新
+					mui.back();
+				});
+            });
+               
+        </script>
+    </body>
+</html>

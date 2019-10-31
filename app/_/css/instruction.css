@@ -1,0 +1,20 @@
+.mui-content{
+    padding:10px;
+    background: #fafafa;
+}
+.mui-content h1{
+    font-size:15px;
+    color:#333333;
+}
+.mui-content .wrap{
+    margin-bottom:16px
+}
+.mui-content .wrap div{
+    color:#666666;
+}
+.mui-content .one{
+    margin-top: 15px
+}
+.mui-content .wrap div{
+    font-size:14px
+}

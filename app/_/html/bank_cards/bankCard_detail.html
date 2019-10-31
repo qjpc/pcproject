@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        <link href="../../css/mui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+        <style>
+        .mui-bar{
+            position: relative;
+        }
+        img{
+            position: absolute;
+            right:20px;
+            bottom:12px
+        }
+        </style>
+    </head>
+    <body>
+        <header class="mui-bar mui-bar-nav head_tbg">
+            <div class="statusbarHeight">&nbsp;</div>
+            <a class=" mui-icon mui-icon-left-nav mui-pull-left back"></a>
+            <h1 class="mui-title">信用卡详情</h1>
+            <img id="back" src="../../img/delete.png" alt="logo" width="14px" height="14px"/>
+        </header>
+        <script src="../../js/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../js/mui.min.js"></script>
+        <script>
+            mui.plusReady(function(){
+                var StatusbarHeight = plus.navigator.getStatusbarHeight();
+				var headerH = StatusbarHeight+44;
+				$(".statusbarHeight").css("height",StatusbarHeight);
+				$("header").css("height",headerH);
+                // mui.init({
+				// 	subpages: [{
+				// 		url: "https://creditcard.feierlaiedu.com/loan?token=2938af47e133e0bd5dc6ecaf2f50467c",
+				// 		id: "loan",
+				// 		styles: {
+				// 			top: headerH,
+				// 			bottom: '0px',
+				// 		}
+				// 	}]
+				// });
+                var self = plus.webview.currentWebview();   //当前页面
+                var card_reg = self.opener();               //上一页面
+                var bank_detail = card_reg.opener();        //上上个页面
+                var old_back = mui.back;
+                var embed=null;
+                function plusReady(){
+                    embed=plus.webview.create(self.card_url, '', {top:headerH,bottom:'0px'});
+                    plus.webview.currentWebview().append(embed);
+                }
+                
+                if(window.plus){
+                    plusReady();
+                    console.log(embed)
+                }else{
+                    document.addEventListener('plusready', plusReady, false);
+                }
+                function goBack(e) {
+                    embed.back();
+                }
+                function canBack() {
+                    embed.canBack( function(e){
+                        console.log(e.canBack)
+                        if(e.canBack){
+                            embed.back()
+                        }else{
+                            // old_back()
+                            mui.openWindow({
+                                url: "./bank_cards.html",
+                                id: "bank_cards",
+                                show: {
+                                    autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                                },
+                                waiting: {
+                                    //autoShow: true, //自动显示等待框，默认为true
+                                    //title: '安全检测中，请等待', //等待对话框上显示的提示内容
+                                },
+                                createNew:false
+                            })
+                        }
+                    });
+                }
+                $(".mui-icon").click(function(){
+                    console.log(embed)
+                    canBack()
+                })
+                $("#back").click(function(){
+                    self.close();
+                    card_reg.close();
+                    bank_detail.close();
+                })
+                
+				window.addEventListener('login', function(e) { //执行刷新
+					location.reload();
+				});
+            })
+        </script>
+    </body>
+</html>
